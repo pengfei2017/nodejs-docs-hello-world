@@ -1,0 +1,5 @@
+FROM jenkinsci/blueocean:latest
+USER root
+# usermod命令在shadow中
+RUN apk add --update shadow && usermod -aG docker jenkins
+USER jenkins
