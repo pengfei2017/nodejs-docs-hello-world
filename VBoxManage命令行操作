@@ -6,3 +6,11 @@ VBoxManage startvm JenkinsServer --type headless
 
 #关闭JenkinsServer虚拟机
 VBoxManage controlvm JenkinsServer poweroff
+
+#显示所有虚拟机的网络
+VboxManage list hostifs
+
+#显示JenkinsServer虚拟机到信息
+VBoxManage showvminfo JenkinsServer
+
+ssh vm-user@`VBoxManage guestproperty get JenkinsServer "/VirtualBox/GuestInfo/Net/0/V4/IP" | awk '{ print $2 }'`
