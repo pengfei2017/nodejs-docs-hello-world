@@ -4,7 +4,11 @@ Install-Module -Name DockerMsftProvider -Force
 ##从远程服务器下载docker-17-03-1-ee.zip文件到当前文件夹的docker-17-03-1-ee.zip文件
 Invoke-WebRequest -Uri https://dockermsft.blob.core.windows.net/dockercontainer/docker-17-03-1-ee.zip -UseBasicParsin -OutFile ./Docker-17-03-1-ee.zip
 
-Install-Package -Name docker -ProviderName DockerMsftProvider -Force
+Install-Package -Name docker -ProviderName DockerMsftProvider
+
+程序包来自未标记为“受信任”的程序包源。
+是否确实要安装来自“DockerDefault”的软件?
+[Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): A
 
 Restart-Computer -Force
 
@@ -18,3 +22,6 @@ ren
 当前文件和文件夹的路径
 文件和文件夹的新文字
 rni ./docker-17-03-1-ee.zip Docker-17-03-1-ee.zip
+
+#复制文件
+Copy-Item C:\Users\Administrator\Desktop\Docker-17-03-1-ee.zip  C:\Users\ADMINI~1\AppData\Local\Temp\DockerMsftProvider
