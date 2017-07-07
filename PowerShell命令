@@ -3,7 +3,7 @@ Install-Module -Name DockerMsftProvider -Force
 
 ##从远程服务器下载docker-17-03-1-ee.zip文件到当前文件夹的docker-17-03-1-ee.zip文件
  Invoke-WebRequest -Uri https://dockermsft.blob.core.windows.net/dockercontainer/docker-17-03-1-ee.zip -UseBasicP
-arsin -OutFile ./docker-17-03-1-ee.zip
+arsin -OutFile ./Docker-17-03-1-ee.zip
 
 Install-Package -Name docker -ProviderName DockerMsftProvider -Force
 
