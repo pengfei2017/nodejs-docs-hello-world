@@ -39,6 +39,9 @@ ADD https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz .
 RUN mv docker/docker /usr/bin/ && rm -rf docker
 USER $USER
 
+#编译images
+sudo docker build -t hepengfei2017/myjenkins:lateat .
+
 安装完使用这个新镜像时在docker run 命令加一个-v /var/run/docker.sock:/var/run/docker.sock 就可以了
 
 #测试结果
