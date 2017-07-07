@@ -10,7 +10,11 @@ Install-Package -Name docker -ProviderName DockerMsftProvider
 是否确实要安装来自“DockerDefault”的软件?
 [Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): A
 
+#重启电脑
 Restart-Computer -Force
+
+#测试是否安装成功
+docker run hello-world:nanoserver
 
 
 #文件或文件夹重命名
