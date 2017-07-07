@@ -29,8 +29,10 @@ curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz && 
 
 #这个有效---选这个
 FROM jenkinsci/blueocean:latest
+USER root
 ADD https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz .
-RUN mv docker/docker /usr/bin/
+RUN mv docker/docker /usr/bin/ && rm -rf docker
+USER $USER
 
 安装完使用这个新镜像时在docker run 命令加一个-v /var/run/docker.sock:/var/run/docker.sock 就可以了
 
@@ -38,18 +40,6 @@ RUN mv docker/docker /usr/bin/
 docker exec <containername> bash -c 'docker run hello-world'
 
 # -------------------------------------------
-
-# -------------------------------------------
-
-#这个有效
-FROM jenkinsci/blueocean:latest
-RUN tar -xzf docker-1.12.2.tgz
-RUN cp docker/docker /usr/bin/
-
-安装完使用这个新镜像时在docker run 命令加一个-v /var/run/docker.sock:/var/run/docker.sock 就可以了
-
-#测试结果
-docker exec <containername> bash -c 'docker run hello-world'
 
 # -------------------------------------------
 
