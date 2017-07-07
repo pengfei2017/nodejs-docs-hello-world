@@ -18,3 +18,11 @@ RUN apk update && \
     adduser -u 1000 -G wheel -D alpine && \
     rm -rf /var/cache/apk/*
 USER alpine
+
+FROM jenkinsci/blueocean:latest
+ADD https://get.docker.com/builds/Linux/x86_64/docker-1.12.2.tgz .
+RUN tar -xzf docker-1.12.2.tgz
+RUN cp docker/docker /usr/bin/
+
+#这个有效
+https://wiki.jenkins.io/display/JENKINS/Docker+Plugin
