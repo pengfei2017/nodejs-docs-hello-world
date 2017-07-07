@@ -8,3 +8,14 @@ arsin -OutFile ./Docker-17-03-1-ee.zip
 Install-Package -Name docker -ProviderName DockerMsftProvider -Force
 
 Restart-Computer -Force
+
+
+#文件或文件夹重命名
+Rename-Item c:/scripts/Test.txt new_name.txt
+Rename-Item 别名
+rni
+ren
+两个参数：
+当前文件和文件夹的路径
+文件和文件夹的新文字
+rni ./docker-17-03-1-ee.zip Docker-17-03-1-ee.zip
