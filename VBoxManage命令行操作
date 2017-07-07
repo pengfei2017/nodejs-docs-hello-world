@@ -1,0 +1,8 @@
+#查看安装到所有虚拟机
+VBoxManage list vms
+
+#以后台无界面方式启动JenkinsServer虚拟机
+VBoxManage startvm JenkinsServer --type headless
+
+#关闭JenkinsServer虚拟机
+VBoxManage controlvm JenkinsServer poweroff
