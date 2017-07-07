@@ -19,10 +19,39 @@ RUN apk update && \
     rm -rf /var/cache/apk/*
 USER alpine
 
+# -------------------------------------------
+# To install, run the following commands as root:
+curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz && tar --strip-components=1 -xvzf docker-17.05.0-ce.tgz -C /usr/local/bin
+
+# Then start docker in daemon mode:
+/usr/local/bin/dockerd
+# -------------------------------------------
+
+#这个有效---选这个
 FROM jenkinsci/blueocean:latest
-ADD https://get.docker.com/builds/Linux/x86_64/docker-1.12.2.tgz .
+ADD https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz .
+RUN mv docker/docker /usr/bin/
+
+安装完使用这个新镜像时在docker run 命令加一个-v /var/run/docker.sock:/var/run/docker.sock 就可以了
+
+#测试结果
+docker exec <containername> bash -c 'docker run hello-world'
+
+# -------------------------------------------
+
+# -------------------------------------------
+
+#这个有效
+FROM jenkinsci/blueocean:latest
 RUN tar -xzf docker-1.12.2.tgz
 RUN cp docker/docker /usr/bin/
+
+安装完使用这个新镜像时在docker run 命令加一个-v /var/run/docker.sock:/var/run/docker.sock 就可以了
+
+#测试结果
+docker exec <containername> bash -c 'docker run hello-world'
+
+# -------------------------------------------
 
 #这个有效
 https://wiki.jenkins.io/display/JENKINS/Docker+Plugin
