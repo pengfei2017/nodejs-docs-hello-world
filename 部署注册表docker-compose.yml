@@ -4,8 +4,8 @@ registry:
   ports:
     - 5000:5000
   environment:
-    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
-    REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt  //在docker swarm中以service方式运行需要这个，参看https://docs.docker.com/registry/deploying/#use-an-insecure-registry-testing-only
+    REGISTRY_HTTP_TLS_KEY: /certs/domain.key //在docker swarm中以service方式运行需要这个，参看https://docs.docker.com/registry/deploying/#use-an-insecure-registry-testing-only
     REGISTRY_AUTH: htpasswd
     REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
     REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
