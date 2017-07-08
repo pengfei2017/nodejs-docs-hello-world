@@ -38,6 +38,7 @@ NIC 1:           MAC: 0800277C1DD2, Attachment: Bridged Interface 'en0: Wi-Fi (A
 其中MAC: 0800277C1DD2是在JenkinsServer虚拟机的设置-》网络-》网卡1-》点开查看高级-》MAC地址中设置的
 
 # 在主机或者虚拟机的终端中输入arp -a查看当前电脑所在的局域网内所有的设备的MAC和IP地址的映射关系
+ARP协议是“Address Resolution Protocol”（地址解析协议）
 arp -a
 输出以下信息
 wifi.wasu.com (192.168.1.1) at 0:6b:8e:9d:2a:8d on en0 ifscope [ethernet]
