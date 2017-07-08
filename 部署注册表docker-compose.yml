@@ -39,3 +39,9 @@ myregistrydomain.com应换成实际的地址，如下
 重启docker应用
  linux上：sudo service docker restart
  Mac上：没有命令行操作，用图形界面操作
+ 
+# 用htpasswd命令创建用户并设置密码
+初次创建加一个-c,代表创建文件
+htpasswd -Bc ./htpasswd hepengfei
+追加用户不用加-c,代表附加新用户
+htpasswd -B ./htpasswd testuser
