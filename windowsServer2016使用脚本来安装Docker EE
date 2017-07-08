@@ -14,7 +14,7 @@ PS> Expand-Archive docker.zip -DestinationPath $Env:ProgramFiles
 PS> Remove-Item -Force docker.zip
 
 # Install Docker. This will require rebooting.
-$null = Install-WindowsFeature containers
+# $null = Install-WindowsFeature containers 这个不安装了，会报错
 
 # Add Docker to the path for the current session.
 PS> $env:path += "$env:ProgramFiles\docker"
