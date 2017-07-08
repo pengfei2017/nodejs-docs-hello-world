@@ -10,9 +10,9 @@ registry:
     REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
     REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
   volumes:
-    - /path/data:/var/lib/registry
-    - /path/certs:/certs
-    - /path/auth:/auth
+    - ~/registry/data:/var/lib/registry
+    - ~/registry/certs:/certs
+    - ~/registry/auth:/auth
     
     
  运行命令docker-compose up -d
