@@ -17,4 +17,4 @@ ssh vm-user@`VBoxManage guestproperty get JenkinsServer "/VirtualBox/GuestInfo/N
 
 hepengfei$ ssh hepengfei@192.168.3.106
 
-VBoxManage guestcontrol JenkinsServer run --username hepengfei --password hpf20140731 --wait-exit --wait-stdout --wait-stderr -- -c '[ -d /<server_folder>/ ] && echo "OK" || echo "Server is not installed"'
+
