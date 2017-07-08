@@ -29,6 +29,8 @@ allow-nondistributable-artifacts选项
   "insecure-registries" : ["myregistrydomain.com:5000"],
   "allow-nondistributable-artifacts": ["myregistrydomain.com:5000"]
 }
-参看链接https://docs.docker.com/registry/deploying/#considerations-for-air-gapped-registries
+参看链接https://docs.docker.com/registry/deploying/#considerations-for-air-gapped-registries 
 
- 
+重启docker应用
+ linux上：sudo service docker restart
+ Mac上：没有命令行操作，用图形界面操作
