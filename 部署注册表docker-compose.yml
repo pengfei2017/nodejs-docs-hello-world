@@ -38,12 +38,15 @@ myregistrydomain.com应换成实际的地址，如下
 
 重启docker应用
  linux上：sudo service docker restart
- Mac上：没有命令行操作，用图形界面操作
+ Mac上：没有直接的service命令行操作，用图形界面命令osascript -e 'quit app "Docker"' && open -a Docker重启GUI的docker
+ windows上：powershell命令Restart-Service docker
  
 # 用htpasswd命令创建用户并设置密码
-初次创建加一个-c,代表创建文件
+初次创建加一个-c,代表创建文件htpasswd文件
 htpasswd -Bc ./htpasswd hepengfei
-追加用户不用加-c,代表附加新用户
+追加用户不用加-c,代表附加新用户到htpasswd文件中
 htpasswd -B ./htpasswd testuser
+从htpasswd文件中删除制定用户
+htpasswd -D ./htpasswd hepengfei
 #配置https和SSL证书请参考以下文章
 https://www.ibm.com/developerworks/library/l-docker-private-reg/index.html
