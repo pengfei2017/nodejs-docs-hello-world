@@ -1,0 +1,37 @@
+使用脚本来安装Docker EE
+当您要手动安装脚本自动安装或安装在空中密码系统上时，请使用以下步骤。
+
+在PowerShell命令提示符下，在具有连接的计算机上下载安装程序归档。
+
+# On an online machine, download the zip file.
+PS> invoke-webrequest -UseBasicparsing -Outfile docker.zip https://download.docker.com/components/engine/windows-server/17.03/docker-17.03.0-ee.zip
+将zip文件复制到要安装Docker的机器上。在PowerShell命令提示符下，使用以下命令提取归档，注册和启动Docker服务。
+
+# Extract the archive.
+PS> Expand-Archive docker.zip -DestinationPath $Env:ProgramFiles
+
+# Clean up the zip file.
+PS> Remove-Item -Force docker.zip
+
+# Install Docker. This will require rebooting.
+$null = Install-WindowsFeature containers
+
+# Add Docker to the path for the current session.
+PS> $env:path += "$env:ProgramFiles\docker"
+
+# Optionally, modify PATH to persist across sessions.
+PS> $newPath = "$env:ProgramFiles\docker;" +
+[Environment]::GetEnvironmentVariable("PATH",
+[EnvironmentVariableTarget]::Machine)
+
+PS> [Environment]::SetEnvironmentVariable("PATH", $newPath,
+[EnvironmentVariableTarget]::Machine)
+
+# Register the Docker daemon as a service.
+PS> dockerd --register-service
+
+# Start the daemon.
+PS> Start-Service docker
+通过运行hello-world容器来测试Docker EE安装。
+
+PS> docker run hello-world:nanoserver
