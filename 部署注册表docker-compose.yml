@@ -31,7 +31,7 @@ allow-nondistributable-artifacts选项
 }
 myregistrydomain.com应换成实际的地址，如下
 {
-  "insecure-registries" : ["myregistrydomain.com:5000"],
+  "insecure-registries" : ["192.168.1.124:5000"],
   "allow-nondistributable-artifacts": ["192.168.1.124:5000"]
 }
 参看链接https://docs.docker.com/registry/deploying/#considerations-for-air-gapped-registries 
