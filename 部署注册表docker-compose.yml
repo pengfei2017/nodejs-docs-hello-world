@@ -22,10 +22,13 @@ registry:
  测试不安全的注册表   部署纯HTTP注册表  使用自签名证书 排除不安全的注册表
  https://docs.docker.com/registry/insecure/#deploying-a-plain-http-registry
 
-您可以在没有互联网连接的环境中运行注册表。但是，如果您依赖任何不是本地的图像构建到镜像推送到本地仓库，那么默认所依赖的不是本地的镜像不会被推送到本地仓库，若
-https://docs.docker.com/registry/deploying/#considerations-for-air-gapped-registries
+您可以在没有互联网连接的环境中运行注册表。但是，如果您依赖任何不是本地的图像构建到镜像推送到本地仓库，那么默认所依赖的不是本地的镜像不会被推送到本地仓库，若需要所有依赖都存储在本地，请按下面设置
+allow-nondistributable-artifacts选项
+文件地址：编辑daemon.json位于/etc/docker/Linux主机和C:\ProgramData\docker\config\daemon.jsonWindows Server上的文件。假设文件以前是空的，请添加以下内容：
 {
   "insecure-registries" : ["myregistrydomain.com:5000"],
   "allow-nondistributable-artifacts": ["myregistrydomain.com:5000"]
 }
+参看链接https://docs.docker.com/registry/deploying/#considerations-for-air-gapped-registries
+
  
