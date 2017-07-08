@@ -16,3 +16,8 @@ registry:
     
     
  运行命令docker-compose up -d
+ 
+ image: registry:2默认使用https链接     获得证书的方法请参考
+ https://docs.docker.com/registry/deploying/#get-a-certificate
+ 测试不安全的注册表   部署纯HTTP注册表  使用自签名证书 排除不安全的注册表
+ https://docs.docker.com/registry/insecure/#deploying-a-plain-http-registry
