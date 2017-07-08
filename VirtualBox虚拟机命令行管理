@@ -15,7 +15,7 @@ VBoxManage startvm JenkinsServer --type headless
 
 #暂停虚拟机
 VBoxManage controlvm JenkinsServer pause 
-#唤醒虚拟机
+#唤醒pause的虚拟机
 VBoxManage controlvm JenkinsServer resume 
 #重启虚拟机
 VBoxManage controlvm JenkinsServer reset 
