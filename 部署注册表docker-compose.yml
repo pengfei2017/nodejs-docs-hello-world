@@ -45,3 +45,5 @@ myregistrydomain.com应换成实际的地址，如下
 htpasswd -Bc ./htpasswd hepengfei
 追加用户不用加-c,代表附加新用户
 htpasswd -B ./htpasswd testuser
+#配置https和SSL证书请参考以下文章
+https://www.ibm.com/developerworks/library/l-docker-private-reg/index.html
