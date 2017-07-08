@@ -1,1 +1,29 @@
+#显示所有的虚拟机，查看虚拟机的名字
+VBoxManage list vms
+
+#显示正在运行的虚拟机，查看虚拟机的名字
+VBoxManage list runningvms
+
+#showvminfo
+
+#clonevm
+
+#modifyvm
+
+#createvm
+
+#启动虚拟机
+VBoxManage startvm JenkinsServer --type headless
+
+#暂停虚拟机
+VBoxManage controlvm JenkinsServer pause 
+#唤醒虚拟机
+VBoxManage controlvm JenkinsServer resume 
+#重启虚拟机
+VBoxManage controlvm JenkinsServer reset 
+#关闭虚拟机
+VBoxManage controlvm JenkinsServer poweroff 
+#保存虚拟机当前状态并关闭
+VBoxManage controlvm JenkinsServer savestate 
+
 
