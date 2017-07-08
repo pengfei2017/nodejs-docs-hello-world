@@ -13,6 +13,13 @@ Install-Package -Name docker -ProviderName DockerMsftProvider
 #重启电脑
 Restart-Computer -Force
 
+#由于默认安装的不是docker最新版本，所以检查更新安装，参考以下地址操作
+https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server
+提示：如果要稍后更新Docker：
+检查安装的版本 Get-Package -Name Docker -ProviderName DockerMsftProvider
+查找当前版本 Find-Package -Name Docker -ProviderName DockerMsftProvider
+当你准备好，用升级Install-Package -Name Docker -ProviderName DockerMsftProvider -Update -Force，其次是Start-Service Docker
+
 #测试是否安装成功
 docker run hello-world:nanoserver
 
