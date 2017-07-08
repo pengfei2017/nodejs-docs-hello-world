@@ -37,4 +37,16 @@ VBoxManage showvminfo JenkinsServer | grep MAC
 NIC 1:           MAC: 0800277C1DD2, Attachment: Bridged Interface 'en0: Wi-Fi (AirPort)', Cable connected: on, 
 其中MAC: 0800277C1DD2是在JenkinsServer虚拟机的设置-》网络-》网卡1-》点开查看高级-》MAC地址中设置的
 
+# 在主机或者虚拟机的终端中输入arp -a查看当前电脑所在的局域网内所有的设备的MAC和IP地址的映射关系
+arp -a
+输出以下信息
+wifi.wasu.com (192.168.1.1) at 0:6b:8e:9d:2a:8d on en0 ifscope [ethernet]
+? (192.168.1.122) at 8:0:27:7c:1d:d2 on en0 ifscope [ethernet]
+? (224.0.0.251) at 1:0:5e:0:0:fb on en0 ifscope permanent [ethernet]
+? (239.255.255.250) at 1:0:5e:7f:ff:fa on en0 ifscope permanent [ethernet]
+其中的at后边的就是MAC地址，和在虚拟机设置中看到的MAC地址是对应的，只不过写法不同，0800277C1DD2中每两位字符之间加一个:就变成了这里看到的arp -a输出的MAC地址
+
+
+
+
 
