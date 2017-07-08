@@ -63,6 +63,8 @@ arp -a | grep 8:0:27:7c:1d:d2
 若查不到，说明机子开启很久了，重启机子再查就好
 4，用ssh登录虚拟机 ssh hepengfei@192.168.1.122
 
+#查看当前电脑的ip
+ifconfig | grep addr
 
 
 
