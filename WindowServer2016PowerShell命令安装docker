@@ -1,5 +1,8 @@
+ #安装参考网页
+ https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server
+ 
  #安装docker
-Install-Module -Name DockerMsftProvider -Force
+Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 
 ##从远程服务器下载docker-17-03-1-ee.zip文件到当前文件夹的docker-17-03-1-ee.zip文件
 Invoke-WebRequest -Uri https://dockermsft.blob.core.windows.net/dockercontainer/docker-17-03-1-ee.zip -UseBasicParsin -OutFile ./Docker-17-03-1-ee.zip
