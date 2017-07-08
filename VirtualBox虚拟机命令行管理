@@ -4,8 +4,6 @@ VBoxManage list vms
 #显示正在运行的虚拟机，查看虚拟机的名字
 VBoxManage list runningvms
 
-#showvminfo
-
 #clonevm
 
 #modifyvm
@@ -25,5 +23,18 @@ VBoxManage controlvm JenkinsServer reset
 VBoxManage controlvm JenkinsServer poweroff 
 #保存虚拟机当前状态并关闭
 VBoxManage controlvm JenkinsServer savestate 
+
+#查看虚拟机的全部信息
+VBoxManage showvminfo JenkinsServer
+
+#查看虚拟机的运行状态
+VBoxManage showvminfo JenkinsServer | grep State
+
+
+#查看虚拟机的运行物理MAC地址
+VBoxManage showvminfo JenkinsServer | grep MAC
+输出以下信息
+NIC 1:           MAC: 0800277C1DD2, Attachment: Bridged Interface 'en0: Wi-Fi (AirPort)', Cable connected: on, 
+其中MAC: 0800277C1DD2是在JenkinsServer虚拟机的设置-》网络-》网卡1-》点开查看高级-》MAC地址中设置的
 
 
