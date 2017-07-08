@@ -46,6 +46,20 @@ wifi.wasu.com (192.168.1.1) at 0:6b:8e:9d:2a:8d on en0 ifscope [ethernet]
 ? (239.255.255.250) at 1:0:5e:7f:ff:fa on en0 ifscope permanent [ethernet]
 其中的at后边的就是MAC地址，和在虚拟机设置中看到的MAC地址是对应的，只不过写法不同，0800277C1DD2中每两位字符之间加一个:就变成了这里看到的arp -a输出的MAC地址
 
+#查看某个虚拟机的ip
+1，以后台运行无界面方式启动虚拟机
+VBoxManage startvm JenkinsServer --type headless
+2，查看虚拟机的MAC地址
+VBoxManage showvminfo JenkinsServer | grep MAC
+得到 MAC 0800277C1DD2
+3，根据虚拟机的MAC地址查看虚拟机的ip
+将MAC 0800277C1DD2每两位字符之间加一个英文:变成常规MAC地址表示法
+08:00:27:7C:1D:D2
+转小写，并且若每两位的前边是零去掉前边的零
+8:0:27:7c:1d:d2
+查询该MAC地址对应的局域网IP
+arp -a | grep 8:0:27:7c:1d:d2
+4，用ssh登录虚拟机 ssh hepengfei@
 
 
 
