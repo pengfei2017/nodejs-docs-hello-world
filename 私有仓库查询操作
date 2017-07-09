@@ -1,6 +1,9 @@
 #查询私有仓库所有的镜像
 curl 192.168.1.124:5000/v2/_catalog
 
+#只看hepengfei用户的所有镜像
+docker search 192.168.1.124:5000/hepengfei/
+
 #过滤只看名字带有hello字符的镜像
 curl 192.168.1.124:5000/v2/_catalog | grep hello
 
