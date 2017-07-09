@@ -10,7 +10,7 @@ cd ~/;
 
 mkdir registry && cd registry && mkdir certs && cd certs;
 
-openssl req -x509 -days 3650 -subj '/CN=reg.hepengfei.com/' -nodes -newkey rsa:2048 -keyout registry.key -out registry.crt;
+sudo openssl req -x509 -days 3650 -subj '/CN=reg.hepengfei.com/' -nodes -newkey rsa:2048 -keyout registry.key -out registry.crt;
 
 生成用户和密码
 
