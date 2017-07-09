@@ -1,15 +1,24 @@
-#查询私有仓库所有的镜像
-curl https://reg.hepengfei.com:5000/v2/_catalog
-
 docker search reg.hepengfei.com:5000
 #只看hepengfei用户的所有镜像
 docker search reg.hepengfei.com:5000/hepengfei/
 
+#查询私有仓库所有的镜像
+curl https://reg.hepengfei.com:5000/v2/_catalog
+curl https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/_catalog
+curl https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog
+
 #过滤只看名字带有hello字符的镜像
 curl https://reg.hepengfei.com:5000/v2/_catalog | grep hello
+curl https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/_catalog | grep hello
+curl https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog | grep hello
 
 #查看私有仓库nanoserver镜像的tag标签列表
 curl https://reg.hepengfei.com:5000/v2/nanoserver/tags/list
+curl https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/nanoserver/tags/list
+curl https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/nanoserver/tags/list
 
 #更多操作请查阅 Docker Registry HTTP API V2
 https://docs.docker.com/registry/spec/api/
+
+#带用户名和密码的curl使用方式参看下文
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-14-04
