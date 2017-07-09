@@ -41,7 +41,7 @@ docker run -d –p 5000:5000 --restart=always --name registry
 
 -v ~/data/registry2:/var/lib/registry    registry:2
 
-或者docker-compose.yml文件
+或者文件docker-compose.yml放在~/registry目录下
 registry:
   restart: always
   image: registry:2
