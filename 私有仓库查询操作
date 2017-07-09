@@ -9,3 +9,6 @@ curl https://reg.hepengfei.com:5000/v2/_catalog | grep hello
 
 #查看私有仓库nanoserver镜像的tag标签列表
 curl https://reg.hepengfei.com:5000/v2/nanoserver/tags/list
+
+#更多操作请查阅 Docker Registry HTTP API V2
+https://docs.docker.com/registry/spec/api/
