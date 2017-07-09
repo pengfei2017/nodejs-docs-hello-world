@@ -39,3 +39,12 @@ rni ./docker-17-03-1-ee.zip Docker-17-03-1-ee.zip
 
 #复制文件
 Copy-Item C:\Users\Administrator\Desktop\Docker-17-03-1-ee.zip  C:\Users\ADMINI~1\AppData\Local\Temp\DockerMsftProvider
+
+从本地计算机卸载docker。
+Uninstall-Package -ProviderName DockerMsftProvider -Name dOcKeR -Verbose
+
+更新docker
+Install-Package -Name docker -ProviderName DockerMsftProvider -Verbose -Update
+
+更多操作，请参阅官方文档如下链接
+https://github.com/OneGet/MicrosoftDockerProvider
