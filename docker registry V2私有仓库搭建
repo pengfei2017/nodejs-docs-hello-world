@@ -90,6 +90,8 @@ Mac客户端添加证书方法：
 sudo scp -r hepengfei@192.168.1.124:~/registry/certs/registry.crt ./  #下载服务器证书到当前目录
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ./registry.crt
 sudo rm ./registry.crt #删除临时文件
+windows客户端添加证书方法：
+参考链接：https://docs.docker.com/docker-for-windows/faqs/#how-do-i-add-custom-ca-certificates
 
 
 域名解析,如果有DNS解析无需做此步骤（registry-server-ip=192.168.1.124）
