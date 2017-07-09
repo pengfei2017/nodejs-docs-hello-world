@@ -46,5 +46,8 @@ Uninstall-Package -ProviderName DockerMsftProvider -Name dOcKeR -Verbose
 更新docker
 Install-Package -Name docker -ProviderName DockerMsftProvider -Verbose -Update
 
+查找所有可用的Docker安装程序的最新版本。
+Find-Package –providerName DockerMsftProvider
+
 更多操作，请参阅官方文档如下链接
 https://github.com/OneGet/MicrosoftDockerProvider
