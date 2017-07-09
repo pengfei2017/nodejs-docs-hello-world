@@ -41,6 +41,23 @@ docker run -d –p 5000:5000 --restart=always --name registry
 
 -v ~/data/registry2:/var/lib/registry    registry:2
 
+或者docker-compose.yml文件
+registry:
+  restart: always
+  image: registry:2
+  ports:
+    - 5000:5000
+  environment:
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+    REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+    REGISTRY_AUTH: htpasswd
+    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+  volumes:
+    - ~/registry/data:/var/lib/registry
+    - ~/registry/certs:/certs
+    - ~/registry/auth:/auth
+
 确认registry server是UP状态，docker ps -a | grep registry
 
 配置docker client端
