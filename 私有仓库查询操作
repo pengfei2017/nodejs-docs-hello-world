@@ -4,18 +4,18 @@ docker search reg.hepengfei.com:5000/hepengfei/
 
 #查询私有仓库所有的镜像
 curl https://reg.hepengfei.com:5000/v2/_catalog
-curl https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/_catalog
-curl https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog
+curl -k https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/_catalog
+curl -k https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog
 
 #过滤只看名字带有hello字符的镜像
 curl https://reg.hepengfei.com:5000/v2/_catalog | grep hello
-curl https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/_catalog | grep hello
-curl https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog | grep hello
+curl -k https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/_catalog | grep hello
+curl -k https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog | grep hello
 
 #查看私有仓库nanoserver镜像的tag标签列表
 curl https://reg.hepengfei.com:5000/v2/nanoserver/tags/list
-curl https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/nanoserver/tags/list
-curl https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/nanoserver/tags/list
+curl -k https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/nanoserver/tags/list
+curl -k https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/nanoserver/tags/list
 
 #更多操作请查阅 Docker Registry HTTP API V2
 https://docs.docker.com/registry/spec/api/
