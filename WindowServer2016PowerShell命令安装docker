@@ -2,26 +2,26 @@
  https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server
  
  #安装docker
-Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
+Install-Module -Name DockerMsftProvider -Repository PSGallery -Force -Verbose
 
 ##从远程服务器下载docker-17-03-1-ee.zip文件到当前文件夹的docker-17-03-1-ee.zip文件
 Invoke-WebRequest -Uri https://dockermsft.blob.core.windows.net/dockercontainer/docker-17-03-1-ee.zip -UseBasicParsin -OutFile C:\Users\ADMINI~1\AppData\Local\Temp\2\DockerMsftProvider\Docker-17-03-1-ee.zip
 
-Install-Package -Name docker -ProviderName DockerMsftProvider
+Install-Package -Name docker -ProviderName DockerMsftProvider -Verbose
 
 程序包来自未标记为“受信任”的程序包源。
 是否确实要安装来自“DockerDefault”的软件?
 [Y] 是(Y)  [A] 全是(A)  [N] 否(N)  [L] 全否(L)  [S] 暂停(S)  [?] 帮助 (默认值为“N”): A
 
 #重启电脑
-Restart-Computer -Force
+Restart-Computer -Force -Verbose
 
 #由于默认安装的不是docker最新版本，所以检查更新安装，参考以下地址操作
 https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-server
 提示：如果要稍后更新Docker：
-检查安装的版本 Get-Package -Name Docker -ProviderName DockerMsftProvider
-查找当前版本 Find-Package -Name Docker -ProviderName DockerMsftProvider
-当你准备好，用升级Install-Package -Name Docker -ProviderName DockerMsftProvider -Update -Force，其次是Start-Service Docker
+检查安装的版本 Get-Package -Name Docker -ProviderName DockerMsftProvider -Verbose
+查找当前版本 Find-Package -Name Docker -ProviderName DockerMsftProvider -Verbose
+当你准备好，用升级Install-Package -Name Docker -ProviderName DockerMsftProvider -Update -Verbose -Force，其次是Start-Service Docker
 
 #测试是否安装成功
 docker run hello-world:nanoserver
@@ -47,7 +47,7 @@ Uninstall-Package -ProviderName DockerMsftProvider -Name dOcKeR -Verbose
 Install-Package -Name docker -ProviderName DockerMsftProvider -Verbose -Update
 
 查找所有可用的Docker安装程序的最新版本。
-Find-Package –providerName DockerMsftProvider
+Find-Package –providerName DockerMsftProvider -Verbose
 
 更多操作，请参阅官方文档如下链接
 https://github.com/OneGet/MicrosoftDockerProvider
