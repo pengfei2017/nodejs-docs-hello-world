@@ -2,7 +2,7 @@
 
 下载镜像
 
-docker pull registry:2.2
+docker pull registry:2
 
 生成自签名证书
 
@@ -39,7 +39,7 @@ docker run -d –p 5000:5000 --restart=always --name registry
 
 -e REGISTRY_HTTP_TLS_KEY=/certs/registry.key
 
--v ~/data/registry2:/var/lib/registry    registry:2.2
+-v ~/data/registry2:/var/lib/registry    registry:2
 
 确认registry server是UP状态，docker ps -a | grep registry
 
