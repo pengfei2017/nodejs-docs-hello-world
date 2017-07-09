@@ -88,6 +88,7 @@ sudo scp -r hepengfei@192.168.1.124:~/registry/certs/registry.crt /etc/docker/ce
 域名解析,如果有DNS解析无需做此步骤（registry-server-ip=192.168.1.124）
 
 echo 192.168.1.124 reg.hepengfei.com >> /etc/hosts
+windows上：C:\Windows\System32\drivers\etc\hosts
 
 验证测试
 
