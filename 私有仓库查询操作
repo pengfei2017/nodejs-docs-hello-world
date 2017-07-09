@@ -7,10 +7,10 @@ docker search reg.hepengfei.com:5000/hepengfei/
 curl http://reg.hepengfei.com:5000/v2/_catalog
 使用用户名验证没有使用HTTPS的SSL证书验证：注意是http
 curl http://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog
-
-curl -k https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/_catalog
+#使用HTTPS的SSL证书验证和用户密码验证：请注意使用的是https
+方法一：
 curl -k https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog
-若不是使用
+或者方法二：请注意加上sudo,因为证书在的目录不加sudo无权访问，会抱no access错误
 sudo curl --cacert /etc/docker/certs.d/reg.hepengfei.com:5000/registry.crt  -X GET https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog
 curl的-X参数指定要使用的协议，若不指定，默认是GET，其他还有POST，DELETE，PUSH等
 
