@@ -3,9 +3,16 @@ docker search reg.hepengfei.com:5000
 docker search reg.hepengfei.com:5000/hepengfei/
 
 #查询私有仓库所有的镜像
-curl https://reg.hepengfei.com:5000/v2/_catalog
+没有使用HTTPS的SSL证书验证和用户密码验证时：注意是http
+curl http://reg.hepengfei.com:5000/v2/_catalog
+使用用户名验证没有使用HTTPS的SSL证书验证：注意是http
+curl http://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog
+
 curl -k https://USERNAME:PASSWORD@reg.hepengfei.com:5000/v2/_catalog
 curl -k https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog
+若不是使用
+sudo curl --cacert /etc/docker/certs.d/reg.hepengfei.com:5000/registry.crt  -X GET https://hepengfei:hpf20140731@reg.hepengfei.com:5000/v2/_catalog
+curl的-X参数指定要使用的协议，若不指定，默认是GET，其他还有POST，DELETE，PUSH等
 
 #过滤只看名字带有hello字符的镜像
 curl https://reg.hepengfei.com:5000/v2/_catalog | grep hello
