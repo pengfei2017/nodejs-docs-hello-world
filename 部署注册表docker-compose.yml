@@ -1,3 +1,5 @@
+文件docker-compose.yml放在~/registry目录下
+
 registry:
   restart: always
   image: registry:2
@@ -7,7 +9,7 @@ registry:
     REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt  //在docker swarm中以service方式运行需要这个，参看https://docs.docker.com/registry/deploying/#use-an-insecure-registry-testing-only
     REGISTRY_HTTP_TLS_KEY: /certs/domain.key //在docker swarm中以service方式运行需要这个，参看https://docs.docker.com/registry/deploying/#use-an-insecure-registry-testing-only
     REGISTRY_AUTH: htpasswd
-    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd #相对于docker-compose.yml所在~/registry目录
     REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
   volumes:
     - ~/registry/data:/var/lib/registry
