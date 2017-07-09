@@ -1,5 +1,5 @@
 #查询私有仓库所有的镜像
-curl reg.hepengfei.com:5000/v2/_catalog
+curl https://reg.hepengfei.com:5000/v2/_catalog
 
 #只看hepengfei用户的所有镜像
 docker search reg.hepengfei.com:5000/hepengfei/
