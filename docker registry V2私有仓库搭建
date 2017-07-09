@@ -10,15 +10,15 @@ cd ~/;
 
 mkdir registry && cd registry && mkdir certs && cd certs;
 
-openssl req -x509 -days 3650 -subj '/CN=reg.zimug.com/' -nodes -newkey rsa:2048 -keyout registry.key -out registry.crt;
+openssl req -x509 -days 3650 -subj '/CN=reg.hepengfei.com/' -nodes -newkey rsa:2048 -keyout registry.key -out registry.crt;
 
 生成用户和密码
 
 cd ~/registry&& mkdir auth;
 
-docker run --entrypoint htpasswd registry:2.2 -Bbn zimug zimug_password > auth/htpasswd;
+docker run --entrypoint htpasswd registry:2.2 -Bbn hepengfei hpf20140731 > auth/htpasswd;
 
-用户：zimug 密码：zimug_password 可随便填写自己想填写的
+用户：hepengfei 密码：hpf20140731 可随便填写自己想填写的
 
 启动registry server
 脚本start_registry.sh放在~/registry目录下
@@ -48,40 +48,40 @@ docker run -d –p 5000:5000 --restart=always --name registry
 同registry server在同一台服务器上配置：
 创建证书目录(没有此目录自己创建，注意端口号)
 
-sudo mkdir -p /etc/docker/certs.d/reg.zimug.com:5000
+sudo mkdir -p /etc/docker/certs.d/reg.hepengfei.com:5000
 
 下载证书
 
-sudo cp ~/registry/certs/registry.crt /etc/docker/certs.d/reg.zimug.com:5000
+sudo cp ~/registry/certs/registry.crt /etc/docker/certs.d/reg.hepengfei.com:5000
 
-域名解析,如果有DNS解析无需做此步骤（registry-server-ip=192.168.1.158）
+域名解析,如果有DNS解析无需做此步骤（registry-server-ip=192.168.1.124）
 
-sudo echo 192.168.1.158 reg.zimug.com   >> /etc/hosts
+sudo echo 192.168.1.124 reg.hepengfei.com   >> /etc/hosts
 
 其他主机配置：
 创建证书目录(没有此目录自己创建，注意端口号)
 
-sudo mkdir -p /etc/docker/certs.d/reg.zimug.com:5000
+sudo mkdir -p /etc/docker/certs.d/reg.hepengfei.com:5000
 
 下载证书
 
-sudo scp -r zimug@192.168.1.158:~/registry/certs/registry.crt /etc/docker/certs.d/reg.zimug.com:5000
+sudo scp -r hepengfei@192.168.1.124:~/registry/certs/registry.crt /etc/docker/certs.d/reg.hepengfei.com:5000
 
-域名解析,如果有DNS解析无需做此步骤（registry-server-ip=192.168.1.10）
+域名解析,如果有DNS解析无需做此步骤（registry-server-ip=192.168.1.124）
 
-echo 192.168.1.158 reg.zimug.com >> /etc/hosts
+echo 192.168.1.124 reg.hepengfei.com >> /etc/hosts
 
 验证测试
 
 登陆(注意加端口号)
 
-docker login reg.zimug.com:5000
+docker login reg.hepengfei.com:5000
 
-输入用户zimug，密码zimug_password以及邮箱
+输入用户hepengfei，密码hpf20140731以及邮箱
 更改镜像tag
 
-docker tag busybox reg.zimug.com:5000/busybox:1.0
+docker tag busybox reg.hepengfei.com:5000/busybox:1.0
 
 push镜像
 
-docker push reg.carson.com:5000/busybox:1.0
+docker push reg.hepengfei.com:5000/busybox:1.0
