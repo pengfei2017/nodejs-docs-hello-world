@@ -16,7 +16,7 @@ sudo openssl req -x509 -days 3650 -subj '/CN=reg.hepengfei.com/' -nodes -newkey 
 
 cd ~/registry&& mkdir auth;
 
-docker run --entrypoint htpasswd registry:2.2 -Bbn hepengfei hpf20140731 > auth/htpasswd;
+docker run --entrypoint htpasswd registry:2 -Bbn hepengfei hpf20140731 > htpasswd
 
 用户：hepengfei 密码：hpf20140731 可随便填写自己想填写的
 
