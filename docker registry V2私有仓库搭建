@@ -74,6 +74,7 @@ sudo cp ~/registry/certs/registry.crt /etc/docker/certs.d/reg.hepengfei.com:5000
 域名解析,如果有DNS解析无需做此步骤（registry-server-ip=192.168.1.124）
 
 sudo echo 192.168.1.124 reg.hepengfei.com   >> /etc/hosts
+windows上：C:\Windows\System32\drivers\etc\hosts
 
 其他主机配置：
 创建证书目录(没有此目录自己创建，注意端口号)
