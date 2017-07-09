@@ -86,6 +86,7 @@ sudo mkdir -p /etc/docker/certs.d/reg.hepengfei.com:5000
 Linux客户端添加证书方法：
 sudo scp -r hepengfei@192.168.1.124:~/registry/certs/registry.crt /etc/docker/certs.d/reg.hepengfei.com:5000
 Mac客户端添加证书方法：
+参考链接：http://container-solutions.com/adding-self-signed-registry-certs-docker-mac/
 sudo scp -r hepengfei@192.168.1.124:~/registry/certs/registry.crt ./  #下载服务器证书到当前目录
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ./registry.crt
 sudo rm ./registry.crt #删除临时文件
