@@ -81,7 +81,8 @@ windows上：C:\Windows\System32\drivers\etc\hosts
 
 sudo mkdir -p /etc/docker/certs.d/reg.hepengfei.com:5000
 
-下载证书
+下载证书，
+指示每个Docker守护进程信任该证书。这样做取决于您的操作系统
 
 Linux客户端添加证书方法：
 sudo scp -r hepengfei@192.168.1.124:~/registry/certs/registry.crt /etc/docker/certs.d/reg.hepengfei.com:5000
@@ -90,7 +91,17 @@ Mac客户端添加证书方法：
 sudo scp -r hepengfei@192.168.1.124:~/registry/certs/registry.crt ./  #下载服务器证书到当前目录
 sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ./registry.crt
 sudo rm ./registry.crt #删除临时文件
-windows客户端添加证书方法：
+windows客户端添加证书方法：。
+
+Windows Server安装方法：
+打开Windows资源管理器，右键单击该domain.crt 文件，然后选择安装证书。出现提示时，选择以下选项：
+商店位置	本地机器
+将所有证书放在以下商店中	选
+单击浏览器并选择受信任的根证书颁发机构。
+单击完成。重启Docker。
+参考链接：https://docs.docker.com/registry/insecure/#using-self-signed-certificates
+
+Docker for Windows安装方法：按照添加自定义CA证书的说明进行操作 。重启Docker。
 参考链接：https://docs.docker.com/docker-for-windows/faqs/#how-do-i-add-custom-ca-certificates
 
 
