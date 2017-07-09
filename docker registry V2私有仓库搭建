@@ -1,0 +1,87 @@
+创建registry server端
+
+下载镜像
+
+docker pull registry:2.2
+
+生成自签名证书
+
+cd ~/;
+
+mkdir registry && cd registry && mkdir certs && cd certs;
+
+openssl req -x509 -days 3650 -subj '/CN=reg.zimug.com/' -nodes -newkey rsa:2048 -keyout registry.key -out registry.crt;
+
+生成用户和密码
+
+cd ~/registry&& mkdir auth;
+
+docker run --entrypoint htpasswd registry:2.2 -Bbn zimug zimug_password > auth/htpasswd;
+
+用户：zimug 密码：zimug_password 可随便填写自己想填写的
+
+启动registry server
+脚本start_registry.sh放在~/registry目录下
+
+docker run -d –p 5000:5000 --restart=always --name registry
+
+-v `pwd`/auth:/auth
+
+-e "REGISTRY_AUTH=htpasswd"
+
+-e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm"
+
+-e "REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd"
+
+-v `pwd`/certs:/certs
+
+-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/registry.crt
+
+-e REGISTRY_HTTP_TLS_KEY=/certs/registry.key
+
+-v ~/data/registry2:/var/lib/registry    registry:2.2
+
+确认registry server是UP状态，docker ps -a | grep registry
+
+配置docker client端
+
+同registry server在同一台服务器上配置：
+创建证书目录(没有此目录自己创建，注意端口号)
+
+sudo mkdir -p /etc/docker/certs.d/reg.zimug.com:5000
+
+下载证书
+
+sudo cp ~/registry/certs/registry.crt /etc/docker/certs.d/reg.zimug.com:5000
+
+域名解析,如果有DNS解析无需做此步骤（registry-server-ip=192.168.1.158）
+
+sudo echo 192.168.1.158 reg.zimug.com   >> /etc/hosts
+
+其他主机配置：
+创建证书目录(没有此目录自己创建，注意端口号)
+
+sudo mkdir -p /etc/docker/certs.d/reg.zimug.com:5000
+
+下载证书
+
+sudo scp -r zimug@192.168.1.158:~/registry/certs/registry.crt /etc/docker/certs.d/reg.zimug.com:5000
+
+域名解析,如果有DNS解析无需做此步骤（registry-server-ip=192.168.1.10）
+
+echo 192.168.1.158 reg.zimug.com >> /etc/hosts
+
+验证测试
+
+登陆(注意加端口号)
+
+docker login reg.zimug.com:5000
+
+输入用户zimug，密码zimug_password以及邮箱
+更改镜像tag
+
+docker tag busybox reg.zimug.com:5000/busybox:1.0
+
+push镜像
+
+docker push reg.carson.com:5000/busybox:1.0
