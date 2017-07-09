@@ -23,11 +23,11 @@ registry:
  https://docs.docker.com/registry/insecure/#deploying-a-plain-http-registry
 
 您可以在没有互联网连接的环境中运行注册表。但是，如果您依赖任何不是本地的图像构建到镜像推送到本地仓库，那么默认所依赖的不是本地的镜像不会被推送到本地仓库，若需要所有依赖都存储在本地，请按下面设置
-allow-nondistributable-artifacts选项  , 注意，allow-nondistributable-artifacts选项从docker 17.6以上版本才能用，当前windowserver2016上最新版本是17.03，所以你不能用，等待官方更新v 吧
+allow-nondistributable-artifacts选项  , 注意，allow-nondistributable-artifacts选项从docker 17.6以上版本才能用，当前windowserver2016上最新版本是17.03，所以你不能用，等待官方更新吧
 文件地址：编辑daemon.json位于/etc/docker/ Linux主机和C:\ProgramData\docker\config\daemon.json Windows Server上和Docker for Mac上单机Docker图标，选择 “首选项”，然后选择“+ 守护进程”，然后再选择高级选项 的文件。假设文件以前是空的，请添加以下内容：
 {
   "insecure-registries" : ["myregistrydomain.com:5000"],
-  "allow-nondistributable-artifacts": ["myregistrydomain.com:5000"]
+  "allow-nondistributable-artifacts": ["myregistrydomain.com:5000"] ##此选项从docker 17.6以上版本才能用，当前windowserver2016上最新版本是17.03，所以你不能用，等待官方更新吧
 }
 myregistrydomain.com应换成实际的地址，如下
 {
