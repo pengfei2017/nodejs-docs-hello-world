@@ -1,0 +1,19 @@
+#安装官方文档
+https://docs.docker.com/compose/install/
+#安装的最新版查看地址
+https://github.com/docker/compose/releases
+
+docker for Mac和docker for windows上已经自带，不用安装
+windows server上安装
+ubuntu上安装
+安装中若有“Permission denied”错误？
+如果是这样，您的/usr/local/bin目录没权限不可写，您将需要安装Compose作为超级用户。
+运行sudo -i
+输入密码进入root用户
+然后运行下载和安装命令
+curl -L https://github.com/docker/compose/releases/download/1.14.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+然后exit，退出超级用户
+
+#运行命令检查是否安装成功
+docker-compose --version
