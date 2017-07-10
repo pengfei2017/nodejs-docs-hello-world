@@ -17,3 +17,7 @@ chmod +x /usr/local/bin/docker-compose
 
 #运行命令检查是否安装成功
 docker-compose --version
+
+docker-compose up -d
+./run_tests
+docker-compose down
