@@ -9,8 +9,8 @@ MAINTAINER 1149426299@qq.com
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 8.1.3
-ENV NODE_SHA256 960ce0e9da98650c0cb86f9550d558996b2e13cff4c376991e74a852babe76ac
+ENV NODE_VERSION 8.1.4
+ENV NODE_SHA256 cc3689ffefc738f6256aab1713343c3c64c24ec997600c0a48243fb26f5e0bce
 
 RUN Invoke-WebRequest $('https://nodejs.org/dist/v{0}/node-v{0}-win-x64.zip' -f $env:NODE_VERSION) -OutFile 'node.zip' -UseBasicParsing ; \
 if ((Get-FileHash node.zip -Algorithm sha256).Hash -ne $env:NODE_SHA256) {exit 1} ; \
@@ -26,7 +26,6 @@ RUN npm install -g @angular/cli
 RUN npm install -g enigmavirtualbox
 
 CMD ["powershell"]
-
 
 
 FROM microsoft/nanoserver
