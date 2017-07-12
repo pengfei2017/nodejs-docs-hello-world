@@ -14,3 +14,25 @@ RUN git clone https://github.com/nodejs/node.git
 RUN cd node ; git pull ; \
     $env:PATH += ';C:\Users\ContainerAdministrator\.windows-build-tools\python27' ; \
     .\vcbuild.bat test nosign
+    
+    
+／／ 
+  windows-build-tools的作用是在window上面安装常见的编译工具，如python、Visual C++ Compilers tools等
+  npm install --global windows-build-tools
+  参考手册如下
+  https://www.npmjs.com/package/windows-build-tools
+／／================================================
+
+
+FROM microsoft/nanoserver
+
+ARG NODE_VERSION=4.6.1
+
+RUN powershell -Command \
+    Invoke-WebRequest https://nodejs.org/dist/v$env:NODE_VERSION/win-x64/node.exe \
+      -OutFile node.exe -UseBasicParsing
+
+CMD [ "node.exe" ]
+
+# 如上，用--build-arg NODE_VERSION可以将参数传递到Dockerfile中覆盖ARG NODE_VERSION的默认值
+docker build -t nodeexe:4.6.1 --build-arg NODE_VERSION=4.6.1 .
