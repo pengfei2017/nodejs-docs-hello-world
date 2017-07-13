@@ -36,3 +36,22 @@ CMD [ "node.exe" ]
 
 # 如上，用--build-arg NODE_VERSION可以将参数传递到Dockerfile中覆盖ARG NODE_VERSION的默认值
 docker build -t nodeexe:4.6.1 --build-arg NODE_VERSION=4.6.1 .
+
+
+／／================================================
+powershell的if elseif  等流程控制语句
+If
+
+Conditionally perform a command.
+
+Syntax
+      if ( condition ) { commands_to_execute }
+      [ elseif ( condition2 ) { commands_to_execute } ]
+      [ else {commands_to_execute} ]
+
+Key
+   Condition  An expression that will evaluate to true or false,
+              often utilising one or more comparison operators.
+
+   commands_to_execute
+              A PowerShell or external command to run if the condition is true.
