@@ -1,6 +1,7 @@
 如何构建Node.js Nano Server Docker基础映像
 参考文章:https://stefanscherer.github.io/how-to-build-nodejs-nanoserver-image/
 nanoserver 不支持安装msi文件,所以通过上面一篇文章可以查看间接安装方法
+nanoserver不支持windows的任何安装，只支持zip等压缩包解压配置环境变量形式的安装
 
 FROM microsoft/windowsservercore
 
