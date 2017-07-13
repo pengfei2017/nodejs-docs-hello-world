@@ -1,3 +1,7 @@
+如何构建Node.js Nano Server Docker基础映像
+参考文章:https://stefanscherer.github.io/how-to-build-nodejs-nanoserver-image/
+nanoserver 不支持安装msi文件
+
 FROM microsoft/windowsservercore
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
