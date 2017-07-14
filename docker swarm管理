@@ -12,5 +12,5 @@ docker node ls
 登录Jenkins建立任务
 访问Jenkins服务器192.168.2.100:8080
 
-使用Jenkins配置Git和Maven的自动化构建,参看下面链接
-http://www.cnblogs.com/binyue/p/4815459.html
+使用Jenkins配置Git和Maven的自动化构建,使用maven镜像
+docker run -it --rm --name my-maven-project -v "$PWD":/usr/src/mymaven -w /usr/src/mymaven maven:3.2-jdk-7 mvn clean install
