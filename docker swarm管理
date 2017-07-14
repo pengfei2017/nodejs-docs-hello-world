@@ -29,5 +29,5 @@ docker push reg.hepengfei.com:5000/mymaven
 使用的时候只用执行下面命令即可得到war文件
 
 
-docker run -it --rm --name my-maven-project -v "$PWD":/usr/src/mymaven -w /usr/src/mymaven/ reg.hepengfei.com:5000/mymaven mvn clean install
+docker run -it --rm --name my-maven-project -v "$PWD":/usr/src/mymaven -w /usr/src/mymaven/app reg.hepengfei.com:5000/mymaven mvn clean install
 
