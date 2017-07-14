@@ -8,3 +8,9 @@ docker swarm join --token SWMTKN-1-62xl6zazqmkqjejnoaswlo33tdlcl5tc3e3benkl54ix6
 
 在管理员主机上查看所有的群内主机
 docker node ls
+
+登录Jenkins建立任务
+访问Jenkins服务器192.168.2.100:8080
+
+使用Jenkins配置Git和Maven的自动化构建,参看下面链接
+http://www.cnblogs.com/binyue/p/4815459.html
