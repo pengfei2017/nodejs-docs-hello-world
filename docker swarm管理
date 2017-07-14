@@ -32,3 +32,7 @@ docker push reg.hepengfei.com:5000/mymaven
 
 docker run -it --rm --name my-maven-project -v "$PWD":/usr/src/mymaven -w /usr/src/mymaven/app reg.hepengfei.com:5000/mymaven mvn clean install
 
+向文件末尾追加一条记录
+echo '192.168.2.111   reg.hepengfei.com' >> /etc/hosts
+用新内容覆盖文件内容
+echo '192.168.2.111   reg.hepengfei.com' > /etc/hosts
