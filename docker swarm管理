@@ -1,0 +1,4 @@
+在docker管理主机上执行命令
+docker swarm init
+export manager_token=$(docker swarm join-token manager -q)
+export worker_token=$(docker swarm join-token worker -q)
