@@ -14,3 +14,9 @@ docker node ls
 
 使用Jenkins配置Git和Maven的自动化构建,使用maven镜像
 docker run -it --rm --name my-maven-project -v "$PWD":/usr/src/mymaven -w /usr/src/mymaven maven:3.2-jdk-7 mvn clean install
+
+在docker集群的管理员主机上执行以下命令发布一个多容器应用
+docker stack deploy --compose-file docker-stack.yml vote
+
+查看发布后的多容器应用已经启动的所有服务
+docker stack services vote
