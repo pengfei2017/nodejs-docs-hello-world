@@ -38,3 +38,7 @@ docker run -it --rm --name my-maven-project -v "$PWD":/usr/src/mymaven -w /usr/s
 echo '192.168.2.111   reg.hepengfei.com' >> /etc/hosts
 用新内容覆盖文件内容
 echo '192.168.2.111   reg.hepengfei.com' > /etc/hosts
+
+
+docker build -f Dockerfile -t reg.hepengfei.com:5000/registration-database ./registration-database
+docker build -f Dockerfile -t reg.hepengfei.com:5000/registration-webserver ./registration-webserver
