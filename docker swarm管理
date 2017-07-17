@@ -40,5 +40,5 @@ echo '192.168.2.111   reg.hepengfei.com' >> /etc/hosts
 echo '192.168.2.111   reg.hepengfei.com' > /etc/hosts
 
 
-docker build -f ./registration-database/Dockerfile -t reg.hepengfei.com:5000/registration-database .
-docker build -f ./registration-webserver/Dockerfile -t reg.hepengfei.com:5000/registration-webserver .
+docker build -f ./registration-database/Dockerfile -t reg.hepengfei.com:5000/registration-database ./registration-database
+docker build -f ./registration-webserver/Dockerfile -t reg.hepengfei.com:5000/registration-webserver ./registration-webserver
