@@ -42,5 +42,7 @@ echo '192.168.2.111   reg.hepengfei.com' > /etc/hosts
 
 docker build -f ./registration-database/Dockerfile -t reg.hepengfei.com:5000/registration-database ./registration-database
 docker build -f ./registration-webserver/Dockerfile -t reg.hepengfei.com:5000/registration-webserver ./registration-webserver
+docker login -u hepengfei -p hpf20140731 reg.hepengfei.com:5000
 docker push reg.hepengfei.com:5000/registration-database
 docker push reg.hepengfei.com:5000/registration-webserver
+docker stack deploy --compose-file docker-stack.yml java-web-demo
