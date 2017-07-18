@@ -49,3 +49,8 @@ docker stack deploy --compose-file docker-stack.yml java-web-demo --with-registr
 
 #查看发布后的java-web-demo应用的每个服务是否有错误
 docker stack ps java-web-demo
+
+#修改ubuntu主机名
+sudo vim /etc/hostname
+sudo vim /etc/hosts
+把上面两个文件中对应的主机名修改掉重启系统即可
