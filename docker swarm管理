@@ -54,3 +54,6 @@ docker stack ps java-web-demo
 sudo vim /etc/hostname
 sudo vim /etc/hosts
 把上面两个文件中对应的主机名修改掉重启系统即可
+
+#管理容器
+docker volume
