@@ -29,4 +29,4 @@ RUN mv docker/docker /usr/bin/ && rm -rf docker
 USER $USER
 
 编译images
-sudo docker build -t reg.chuangjiangx.com/myjenkins:lateat .
+sudo docker build -t reg.chuangjiangx.com/jenkins:lateat .
