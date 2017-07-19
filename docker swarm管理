@@ -57,3 +57,6 @@ sudo vim /etc/hosts
 
 #管理容器的卷
 docker volume
+
+#通用控制平面概述 Universal Control Plane overview Docker的企业级集群管理解决方案
+https://docs.docker.com/datacenter/ucp/2.1/guides/
