@@ -11,11 +11,13 @@ sudo yum makecache fast
 
 sudo yum install docker-ce
 
-#安装特定版本
+# 安装特定版本
 列出所有可用版本
 yum list docker-ce.x86_64  --showduplicates | sort -r
 指定版本号进行安装
 sudo yum install docker-ce-<VERSION>
 
-#启动Docker
+# 启动Docker
 sudo systemctl start docker
+
+# 
