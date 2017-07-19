@@ -20,4 +20,13 @@ sudo yum install docker-ce-<VERSION>
 # 启动Docker
 sudo systemctl start docker
 
-# 
+# 在JenkinsServer上用下面的Dockerfile文件构建jenkins镜像
+Dockerfile文件内容如下
+FROM jenkinsci/blueocean:latest
+USER root
+ADD https://get.docker.com/builds/Linux/x86_64/docker-17.05.0-ce.tgz .
+RUN mv docker/docker /usr/bin/ && rm -rf docker
+USER $USER
+
+编译images
+sudo docker build -t reg.chuangjiangx.com/myjenkins:lateat .
