@@ -34,3 +34,37 @@ sudo docker build -t reg.chuangjiangx.com/jenkins:lateat .
 #启动Jenkins服务器
 docker run -d -p 80:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v /jenkins_home:/var/jenkins_home reg.chuangjiangx.com/jenkins:lateat
 docker logs <容器名或者容器ID> 查看登录Jenkins的初始密码
+
+# 在DockerManager1服务器上安装java
+访问 Oracle JDK download page, 查看 RPM version.
+复制 jdk-8u102-linux-x64.rpm 的下载地址并用下面的 wget 下载它
+wget --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.rpm
+用yum localinstall安装
+sudo yum localinstall jdk-8u141-linux-x64.rpm
+删除下载的安装包
+rm ~/jdk-8u141-linux-x64.rpm -f
+现在 JDK 应该被安装在 /usr/java/中
+cd /usr/java
+ls -lsah
+验证是否安装好
+java -version
+cd ~/
+编辑 .bash_profile文件， append the export JAVA_HOME at the end of the file, for example :
+vim .bash_profile
+
+export JAVA_HOME=/usr/java/jdk1.8.0_141/
+export JRE_HOME=/usr/java/jdk1.8.0_141/jre
+
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+
+测试环境变量是否设置好
+source .bash_profile
+java -version
+echo $JRE_HOME
+echo $JAVA_HOME
+echo $PATH
+
+安装了多个版本的java，可以使用下面命令设置默认的java版本
+If the CentOS has multiple JDK installed, you can use the alternatives command to set the default java
+sudo alternatives --config java
+
