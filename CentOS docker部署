@@ -70,4 +70,6 @@ sudo alternatives --config java
 
 # 在DockerManager1上执行 docker swarm init，然后在DockerWorker1和DockerWorker2工作主机上执行命令，加入DockerManager1的docker集群
 
-
+====================================
+# 每一个作为工作主机加入到docker集群的主机上需要安装docker
+# 每一个作为管理主机加入到docker集群的主机上需要安装docker和java
