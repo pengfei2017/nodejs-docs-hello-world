@@ -32,4 +32,4 @@ USER $USER
 sudo docker build -t reg.chuangjiangx.com/jenkins:lateat .
 
 #启动Jenkins服务器
-docker run -d -p 80:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v /jenkins_home:/var/jenkins_home reg.chuangjiangx.com/jenkins
+docker run -d -p 80:8080 -p 50000:50000 -v /var/run/docker.sock:/var/run/docker.sock -v /jenkins_home:/var/jenkins_home reg.chuangjiangx.com/jenkins:lateat
