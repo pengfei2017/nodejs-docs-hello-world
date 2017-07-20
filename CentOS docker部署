@@ -104,4 +104,8 @@ registry:
     - /registry/certs:/certs
     - /registry/auth:/auth
     
-注：上面文件中environment中的/certs/registry.cr指的是image: registry:2的容器中的/certs目录，由volumes下面挂载到- /registry/certs:/certs本机的/registry/certs目录
+注：上面文件中environment中的/certs/fullchain.pem指的是image: registry:2的容器中的/certs目录，由volumes下面挂载到- /registry/certs:/certs本机的/registry/certs目录
+启动registry服务
+docker-compose up -d
+查看registry服务是否是UP状态
+docker ps -a | grep registry
