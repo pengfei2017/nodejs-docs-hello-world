@@ -189,3 +189,5 @@ docker build -f ./dockerfiles/Dockerfile.maven  -t reg.chuangjiangx.com/agent-ba
 docker push reg.chuangjiangx.com/agent-backend-maven
 在项目中运行镜像容器进行编译项目
 docker run -it --rm --name agent-backend-maven -v $(pwd):/usr/src/mymaven reg.chuangjiangx.com/agent-backend-maven
+
+# 在Jenkins中安装Gitlab Hook Plugin插件
