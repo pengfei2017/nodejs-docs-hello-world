@@ -73,3 +73,35 @@ sudo alternatives --config java
 ====================================
 # 每一个作为工作主机加入到docker集群的主机上需要安装docker
 # 每一个作为管理主机加入到docker集群的主机上需要安装docker和java
+
+#
+docker build -f ./dockerfiles/Dockerfile.maven  -t reg.chuangjiangx.com/agent-backend-maven .
+
+# 在DockerRegistryServer服务器上配置证书和密码
+cd /registry/
+#生成本地证书或者把第三方证书拷贝到这里
+mkdir certs && cd certs
+生成用户和密码
+mkdir auth && cd auth
+docker run --entrypoint htpasswd registry:2 -Bbn hepengfei hpf20140731 > htpasswd
+创建启动registry的启动文件
+cd /registry/
+vim docker-compose.yml
+粘贴以下内容到docker-compose.yml文件
+registry:
+  restart: always
+  image: registry:2
+  ports:
+    - 80:5000
+  environment:
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/registry.crt  
+    REGISTRY_HTTP_TLS_KEY: /certs/registry.key
+    REGISTRY_AUTH: htpasswd
+    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+  volumes:
+    - /registry/data:/var/lib/registry
+    - /registry/certs:/certs
+    - /registry/auth:/auth
+    
+注：上面文件中environment中的/certs/registry.cr指的是image: registry:2的容器中的/certs目录，由volumes下面挂载到- /registry/certs:/certs本机的/registry/certs目录
