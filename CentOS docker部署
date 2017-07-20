@@ -119,4 +119,69 @@ docker ps -a | grep registry
 curl https://hepengfei:hpf20140731@reg.chuangjiangx.com/v2/_catalog
 
 # 编译本地项目maven镜像
+#进入原maven内部
+docker run -it reg.chuangjiangx.com/maven bash
+换成阿里云的镜像站
+进入目录
+cd /etc/apt/
+备份镜像源文件
+cp sources.list sources.list.bak
+清空源文件
+echo '' > sources.list
+换成阿里云的镜像源地址
+echo 'deb http://mirrors.aliyun.com/debian/ stretch main non-free contrib' > sources.list
+安装vim编辑器
+apt-get update
+apt-get install vim
+编辑maven的配置文件，换成阿里云的maven包下载地址，要不然会报找不到一些阿里支付的pom包的错误
+cd /usr/share/maven/conf/
+vim settings.xml
+添加下面两段代码
+<mirror>
+		<id>nexus-osc</id>
+		<mirrorOf>central</mirrorOf>
+		<name>Nexus osc</name>
+		<url>http://114.55.50.30/nexus/content/groups/public/</url>
+    </mirror>
+    
+    和
+<profile>
+        <id>jdk-1.4</id>
+
+        <activation>
+            <jdk>1.4</jdk>
+        </activation>
+      	<repositories>
+			<repository>
+				<id>private nexus</id>
+				<url>http://114.55.50.30/nexus/content/groups/public/</url>
+				<releases>
+				  <enabled>true</enabled>
+				</releases>
+				<snapshots>
+				  <enabled>true</enabled>
+				</snapshots>
+			</repository>
+		</repositories>
+		<pluginRepositories>
+			<pluginRepository>
+				<id>nexus</id>
+				<name>local private nexus</name>
+				<url>http://114.55.50.30/nexus/content/groups/public/</url>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+				<snapshots>
+					<enabled>false</enabled>
+				</snapshots>
+			</pluginRepository>
+		</pluginRepositories>
+    </profile>
+提交镜像
+exit 退出原maven的容器内部
+docker ps 查看刚才编辑的容器的容器ID
+docker commit <容器名或者容器ID> reg.chuangjiangx.com/maven
+把新的maven镜像推到私有镜像服务器
+docker push reg.chuangjiangx.com/maven
+根据项目中Dockerfile.maven文件构建reg.chuangjiangx.com/agent-backend-maven镜像
 docker build -f ./dockerfiles/Dockerfile.maven  -t reg.chuangjiangx.com/agent-backend-maven .
