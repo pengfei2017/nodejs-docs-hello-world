@@ -187,3 +187,5 @@ docker push reg.chuangjiangx.com/maven
 docker build -f ./dockerfiles/Dockerfile.maven  -t reg.chuangjiangx.com/agent-backend-maven .
 把reg.chuangjiangx.com/agent-backend-maven推送到镜像库
 docker push reg.chuangjiangx.com/agent-backend-maven
+在项目中运行镜像容器进行编译项目
+docker run -it --rm --name agent-backend-maven -v $(pwd):/usr/src/mymaven reg.chuangjiangx.com/agent-backend-maven
