@@ -185,3 +185,5 @@ docker commit <容器名或者容器ID> reg.chuangjiangx.com/maven
 docker push reg.chuangjiangx.com/maven
 根据项目中Dockerfile.maven文件构建reg.chuangjiangx.com/agent-backend-maven镜像
 docker build -f ./dockerfiles/Dockerfile.maven  -t reg.chuangjiangx.com/agent-backend-maven .
+把reg.chuangjiangx.com/agent-backend-maven推送到镜像库
+docker push reg.chuangjiangx.com/agent-backend-maven
