@@ -111,5 +111,9 @@ curl -L https://github.com/docker/compose/releases/download/1.15.0-rc1/docker-co
 chmod +x /usr/local/bin/docker-compose
 启动registry服务
 docker-compose up -d
+如果端口被占用，使用netstat -ntlp | grep 80查看哪个进程占用80端口 20874/nginx: master
+用ps 20874 查看进程的详细信息
+用kill -9 20874杀死进程
+
 查看registry服务是否是UP状态
 docker ps -a | grep registry
