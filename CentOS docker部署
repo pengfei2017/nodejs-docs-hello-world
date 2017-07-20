@@ -115,5 +115,8 @@ docker-compose up -d
 查看registry服务是否是UP状态
 docker ps -a | grep registry
 
+# 用用户名和密码查看镜像库中有哪些镜像
+curl https://hepengfei:hpf20140731@reg.chuangjiangx.com/v2/_catalog
+
 # 编译本地项目maven镜像
 docker build -f ./dockerfiles/Dockerfile.maven  -t reg.chuangjiangx.com/agent-backend-maven .
