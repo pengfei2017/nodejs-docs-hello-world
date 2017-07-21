@@ -229,7 +229,11 @@ docker tag node reg.chuangjiangx.com/node:latest
 docker push reg.chuangjiangx.com/node:latest
 
 docker build -f ./dockerfiles/Dockerfile.node  -t reg.chuangjiangx.com/agent-node .
+不能写成下面这样
 docker run -it --rm --name agent-node -v $(pwd):/usr/src/app reg.chuangjiangx.com/agent-node
+一定要写成下面这样
+docker run -it --rm --name agent-node -v $(pwd)/dist:/usr/src/app/dist reg.chuangjiangx.com/agent-node
+上面的区别在于，node有一个bug,当用npm install时，如果挂载$(pwd):/usr/src/app，npm install安装完就没有node_modules文件夹了，所以只挂载需要输出的编译后的dist包就好
 
 
 
