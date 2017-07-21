@@ -213,6 +213,8 @@ docker run -it --rm --name agent-backend-maven -v $(pwd):/usr/src/mymaven reg.ch
 
 # 在Jenkins中安装Copy Artifact Plugin插件
 
+jenkins参考教程：https://berlin.gitbooks.io/jenkins/content/job/gou_jian_de_hong_fa_qi.html
+
 # 编译前段agent项目
 下载node镜像
 docker pull node
