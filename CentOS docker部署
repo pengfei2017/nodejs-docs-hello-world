@@ -210,3 +210,7 @@ docker push reg.chuangjiangx.com/agent-backend-maven
 docker run -it --rm --name agent-backend-maven -v $(pwd):/usr/src/mymaven reg.chuangjiangx.com/agent-backend-maven
 
 # 在Jenkins中安装Gitlab Hook Plugin插件
+
+# 在Jenkins中安装Copy Artifact Plugin插件
+
+#
