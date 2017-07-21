@@ -201,7 +201,7 @@ RUN mvn clean install -DskipTests
 # 这里别用WORKDIR /usr/src/mymaven/agent-backend-web，一定要用RUN cd /usr/src/mymaven/agent-backend-web，因为一旦用WORKDIR，由于上下文环境变了，打包agent-backend-web时无法拿到这个工作上下文空间以外的agent-backend-common中生成的jar包
 RUN cd /usr/src/mymaven/agent-backend-web
 
-CMD ["mvn", "clean", "package", "-DskipTests", "-Pprod", "-X"]
+CMD ["mvn", "clean", "package", "-DskipTests", "-Pprod"]
 ----------------------------------------
 
 把reg.chuangjiangx.com/agent-backend-maven推送到镜像库
