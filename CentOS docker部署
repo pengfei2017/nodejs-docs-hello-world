@@ -213,4 +213,11 @@ docker run -it --rm --name agent-backend-maven -v $(pwd):/usr/src/mymaven reg.ch
 
 # 在Jenkins中安装Copy Artifact Plugin插件
 
-#
+# 编译前段agent项目
+下载node镜像
+docker pull node
+将node镜像推送到私有镜像库,这样再拉取node镜像时会快很多
+docker tag node reg.chuangjiangx.com/node:latest
+docker push reg.chuangjiangx.com/node:latest
+
+
