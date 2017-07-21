@@ -228,4 +228,8 @@ docker pull node
 docker tag node reg.chuangjiangx.com/node:latest
 docker push reg.chuangjiangx.com/node:latest
 
+docker build -f ./dockerfiles/Dockerfile.node  -t reg.chuangjiangx.com/agent-node .
+docker run -it --rm --name agent-node -v $(pwd):/usr/src/app reg.chuangjiangx.com/agent-node
+
+
 
