@@ -229,6 +229,24 @@ docker tag node reg.chuangjiangx.com/node:latest
 docker push reg.chuangjiangx.com/node:latest
 
 docker build -f ./dockerfiles/Dockerfile.node  -t reg.chuangjiangx.com/agent-node .
+==========Dockerfile.node文件内容如下============
+FROM reg.chuangjiangx.com/node:latest
+MAINTAINER <author 贺鹏飞>
+
+# docker run -it --rm --name my-running-script -v "$PWD":/usr/src/app -w /usr/src/app node:4 node your-daemon-or-script.js
+
+ADD . /usr/src/app
+
+WORKDIR /usr/src/app
+
+# 安装阿里的cnpm,这样安装npm install时用阿里的镜像源，速度更快 参考地址：https://npm.taobao.org/
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+# 用阿里的镜像进行npm install安装
+RUN cnpm install
+
+CMD ["node", "./node_modules/gulp/bin/gulp.js", "--color", "--gulpfile", "./gulpfile.js", "default"]
+===============================================
 不能写成下面这样
 docker run -it --rm --name agent-node -v $(pwd):/usr/src/app reg.chuangjiangx.com/agent-node
 一定要写成下面这样
