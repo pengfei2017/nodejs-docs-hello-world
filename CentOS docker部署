@@ -185,6 +185,25 @@ docker commit <容器名或者容器ID> reg.chuangjiangx.com/maven
 docker push reg.chuangjiangx.com/maven
 根据项目中Dockerfile.maven文件构建reg.chuangjiangx.com/agent-backend-maven镜像
 docker build -f ./dockerfiles/Dockerfile.maven  -t reg.chuangjiangx.com/agent-backend-maven .
+
+---------Dockerfile.maven文件内容--------
+FROM reg.chuangjiangx.com/maven:latest
+MAINTAINER <author 贺鹏飞>
+
+# 这个文件也可以用这行命令代替docker run -it --rm --name my-maven-project -v "$PWD":/usr/src/mymaven -w /usr/src/mymaven maven:3.2-jdk-7 mvn clean install
+
+ADD . /usr/src/mymaven
+
+WORKDIR /usr/src/mymaven
+
+RUN mvn clean install -DskipTests
+
+# 这里别用WORKDIR /usr/src/mymaven/agent-backend-web，一定要用RUN cd /usr/src/mymaven/agent-backend-web，因为一旦用WORKDIR，由于上下文环境变了，打包agent-backend-web时无法拿到这个工作上下文空间以外的agent-backend-common中生成的jar包
+RUN cd /usr/src/mymaven/agent-backend-web
+
+CMD ["mvn", "clean", "package", "-DskipTests", "-Pprod", "-X"]
+----------------------------------------
+
 把reg.chuangjiangx.com/agent-backend-maven推送到镜像库
 docker push reg.chuangjiangx.com/agent-backend-maven
 在项目中运行镜像容器进行编译项目
