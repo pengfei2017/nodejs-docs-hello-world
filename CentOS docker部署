@@ -271,7 +271,7 @@ docker swarm join-token worker
 docker node update --availability drain <hostname或者id(用docker node ls查看)>
 
 在docker集群的管理员主机上执行以下命令向集群中工作主机发布一个多容器应用
-docker stack deploy --compose-file ./dockerfiles/docker-stack.yml agent-web
+docker stack deploy --compose-file ./dockerfiles/docker-stack.yml agent-web --with-registry-auth
 =============docker-stack.yml文件内容如下=========
 version: '3.1'
 
