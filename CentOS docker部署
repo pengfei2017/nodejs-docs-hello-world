@@ -261,3 +261,5 @@ docker run -it --rm --name agent-backend-runjava -v $(pwd)/logs/agent:/var/logs/
 如果配置好的job在docker-manager1主机上报无法克隆远程代码的错误，那是因为docker-manager1上没有安装git，用下面命令在docker-manager1上安装git就好
 centos安装git用命令yum install git-core
 ubuntu安装git用命令apt-get install git
+
+要在Jenkins中压缩归档的文件，需要安装Jenkins插件 Compress Artifacts Plugin
