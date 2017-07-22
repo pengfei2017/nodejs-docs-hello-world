@@ -272,6 +272,35 @@ docker node update --availability drain <hostname或者id(用docker node ls查�
 
 在docker集群的管理员主机上执行以下命令向集群中工作主机发布一个多容器应用
 docker stack deploy --compose-file ./dockerfiles/docker-stack.yml agent-web
+=============docker-stack.yml文件内容如下=========
+version: '3.1'
 
-查看发布后的多容器应用已经启动的所有服务
+services:
+
+    agent-web-server:
+        image: reg.chuangjiangx.com/agent-backend-runjava
+        # mount point for application in tomcat
+        volumes:
+            - AgentLogs:/var/logs/agent
+        ports:
+            - "80:9099"
+        networks:
+            - agent-net
+        deploy:
+            replicas: 2
+            update_config:
+                parallelism: 2
+            restart_policy:
+                condition: on-failure
+
+volumes:
+    AgentLogs:
+
+networks:
+    agent-net:
+        driver: overlay
+
+==============================================
+
+查看发布后的多容器应用已经启动的所有服务以及节点分配
 docker stack services agent-web
