@@ -272,6 +272,7 @@ docker node update --availability drain <hostname或者id(用docker node ls查�
 
 在docker集群的管理员主机上执行以下命令向集群中工作主机发布一个多容器应用
 docker stack deploy --compose-file ./dockerfiles/docker-stack.yml agent-web --with-registry-auth
+注：--with-registry-auth一定要加上，不然发布镜像时因worker主机上没有登录私有镜像库，所以会报No such image...的错误
 =============docker-stack.yml文件内容如下=========
 version: '3.1'
 
