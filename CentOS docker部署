@@ -72,7 +72,9 @@ sudo alternatives --config java
 
 ====================================
 # 每一个作为工作主机加入到docker集群的主机上需要安装docker
-# 每一个作为管理主机加入到docker集群的主机上需要安装docker和java
+# 每一个作为管理主机加入到docker集群的主机上需要安装docker和java,还有git
+centos安装git用命令yum install git-core
+ubuntu安装git用命令apt-get install git
 
 # 在DockerRegistryServer服务器上配置证书和密码
 cd /registry/
@@ -256,3 +258,6 @@ docker run -it --rm --name agent-node -v $(pwd)/dist:/usr/src/app/dist reg.chuan
 docker build -f ./dockerfiles/Dockerfile.runjava -t reg.chuangjiangx.com/agent-backend-runjava .
 docker run -it --rm --name agent-backend-runjava -v $(pwd)/logs/agent:/var/logs/agent reg.chuangjiangx.com/agent-backend-runjava
 
+如果配置好的job在docker-manager1主机上报无法克隆远程代码的错误，那是因为docker-manager1上没有安装git，用下面命令在docker-manager1上安装git就好
+centos安装git用命令yum install git-core
+ubuntu安装git用命令apt-get install git
