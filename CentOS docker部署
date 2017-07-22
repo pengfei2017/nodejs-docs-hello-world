@@ -279,7 +279,7 @@ services:
 
     agent-web-server:
         image: reg.chuangjiangx.com/agent-backend-runjava
-        # mount point for application in tomcat
+        # mount point for application
         volumes:
             - AgentLogs:/var/logs/agent
         ports:
