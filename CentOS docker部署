@@ -269,3 +269,9 @@ docker swarm join-token worker
 
 更新管理员节点的状态使他只做管理任务不接受任何worker任务
 docker node update --availability drain <hostname或者id(用docker node ls查看)>
+
+在docker集群的管理员主机上执行以下命令向集群中工作主机发布一个多容器应用
+docker stack deploy --compose-file ./dockerfiles/docker-stack.yml agent-web
+
+查看发布后的多容器应用已经启动的所有服务
+docker stack services agent-web
