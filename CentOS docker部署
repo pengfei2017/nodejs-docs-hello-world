@@ -322,3 +322,8 @@ docker volume
 docker cp f1802a743d7d:/etc/apache2/apache2.conf ./
 把主机当前目录下的apache2.conf文件拷贝到f1802a743d7d容器的/etc/apache2/目录下
 docker cp ./apache2.conf f1802a743d7d:/etc/apache2/ 
+
+# 启动mysql
+docker run -d --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql
+# docker exec -it 可以让我们进入一个已经运行的容器内部，并提供一个容器内部的bash shell
+docker exec -it some-mysql bash
