@@ -317,3 +317,8 @@ sudo vim /etc/hosts
 #管理容器的卷
 docker volume
 
+#在主机和容器之间拷贝文件
+把f1802a743d7d容器中的/etc/apache2/apache2.conf文件拷贝到主机当前目录下
+docker cp f1802a743d7d:/etc/apache2/apache2.conf ./
+把主机当前目录下的apache2.conf文件拷贝到f1802a743d7d容器的/etc/apache2/目录下
+docker cp ./apache2.conf f1802a743d7d:/etc/apache2/ 
