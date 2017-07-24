@@ -337,3 +337,6 @@ POP3/SMTP服务 授权码：hpf20140731hpf
 
 # 退出私有镜像库
 docker logout reg.chuangjiangx.com
+
+# Docker RUN与CMD vs ENTRYPOINT的区别
+http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
