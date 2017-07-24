@@ -332,3 +332,6 @@ docker exec -it some-mysql bash
 hepengfei2017@163.com
 密码：hpf20140731
 POP3/SMTP服务 授权码：hpf20140731hpf
+
+# 参数化构建过程，选择git tag标签进行构建
+Jenkins获取git tags代码
