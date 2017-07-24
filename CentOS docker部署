@@ -334,3 +334,6 @@ hepengfei2017@163.com
 POP3/SMTP服务 授权码：hpf20140731hpf
 
 # 参数化构建过程，选择git tag标签进行构建，参考链接：http://www.sohu.com/a/132990772_472899
+
+# 退出私有镜像库
+docker logout reg.chuangjiangx.com
