@@ -341,4 +341,4 @@ docker logout reg.chuangjiangx.com
 # Docker RUN与CMD vs ENTRYPOINT的区别
 http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
 
-scp ./* root@116.62.143.73:~/agent
+scp -r ./* root@116.62.143.73:~/agent
