@@ -68,7 +68,7 @@ echo $PATH
 If the CentOS has multiple JDK installed, you can use the alternatives command to set the default java
 sudo alternatives --config java
 
-# 在DockerManager1上执行 docker swarm init --advertise-addr 192.168.99.121  ，然后在DockerWorker1和DockerWorker2工作主机上执行命令，加入DockerManager1的docker集群
+# 在DockerManager1上执行 docker swarm init --advertise-addr 116.62.58.231  ，然后在DockerWorker1和DockerWorker2工作主机上执行命令，加入DockerManager1的docker集群
 
 ====================================
 # 每一个作为工作主机加入到docker集群的主机上需要安装docker
