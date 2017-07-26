@@ -256,7 +256,7 @@ docker run -it --rm --name agent-node -v $(pwd)/dist:/usr/src/app/dist reg.chuan
 上面的区别在于，node有一个bug,当用npm install时，如果挂载$(pwd):/usr/src/app，npm install安装完就没有node_modules文件夹了，所以只挂载需要输出的编译后的dist包就好
 
 docker build -f ./dockerfiles/Dockerfile.runjava -t reg.chuangjiangx.com/agent-backend-runjava .
-docker run -it --rm --name agent-backend-runjava -v $(pwd)/logs/agent:/var/logs/agent reg.chuangjiangx.com/agent-backend-runjava
+docker run -it --rm --name agent-backend-runjava -p 8080:8080 -v $(pwd)/logs/agent:/var/logs/agent reg.chuangjiangx.com/agent-backend-runjava
 
 如果配置好的job在docker-manager1主机上报无法克隆远程代码的错误，那是因为docker-manager1上没有安装git，用下面命令在docker-manager1上安装git就好
 centos安装git用命令yum install git-core
