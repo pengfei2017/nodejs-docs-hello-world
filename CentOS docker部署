@@ -342,3 +342,68 @@ docker logout reg.chuangjiangx.com
 http://goinbigdata.com/docker-run-vs-cmd-vs-entrypoint/
 
 scp -r ./* root@116.62.143.73:~/agent
+
+#----------------------------------------
+Docker运行后自动退出的解决办法？
+
+Docker是一个应用程序容器引擎。使用它，我们可以将任何Linux软件打包成一个独立的，隔离的容器映像，可以轻松地分发，并在任何主机上运行。一旦我们建立或下
+载了图像，我们可以使用它来启动容器，我们想要并运行它们上的软件。
+
+昨天，在Docker的图像上开始进行一些处理时，我遇到了一些问题，我将在本博客中解释一下我用来解决这个问题的解决方案。我希望它会帮助某人。
+
+问题  ：根据Docker教程，我读到目前为止，使用“ docker run [OPTIONS] IMAGE [：TAG | @DIGEST] [COMMAND] [ARG ...]”  将从图像启动容器，容器
+将运行。但在我的情况下，它不是。
+
+如果我跑了“ docker ps”，没有任何输出。
+我试过“ docker ps -a”，我可以看到容器已经退出了：
+mohit.chandra@mohit106:/home/mohit/docker# docker ps -a
+CONTAINER_ID    IMAGE            COMMAND                 CREATED        STATUS         NAMES
+a581778502e9    webkul/odoo:v10  "/docker-entrypoint.s"  2 minutes ago  Exited(126)    dare_dev
+
+这是Dockerfile的内容：
+FROM webkul/odoo
+MAINTAINER Mohit Chandra <mohit@webkul.com>
+ 
+# Expose Odoo/Postgresql services
+EXPOSE 8069 5432
+ 
+# Copy Entrypoint script in the container
+COPY ./docker-entrypoint.sh /
+ 
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+这里是脚本文件（docker-entrypoint.sh）的内容：
+set -e
+echo "Starting PostgreSQL..."
+service postgresql start
+echo "Starting ODOO..."
+service odoo-server start
+
+我尝试了许多事情，Google，但没有任何作用。感谢Stackoverflow，我发现了这个背后的原因，
+
+原因：Docker需要在前台继续运行命令。否则，它认为该应用程序已停止，并关闭该容器。由于我的脚本（docker-entrypoint.sh）仅包含后台进程，并且之后没有
+其他前台进程触发，这就是为什么在脚本结束时容器自动退出的原因。
+
+解决方案：为了解决这个问题，我们需要在前台运行某些东西，或者使用一个进程管理器（如runit或supervisord）来运行进程。
+
+这个行为让我很长一段时间，最后通过Hit-n-Try方法，我得到了更好的技巧来解决这个问题，这里是：
+
+在脚本末尾添加额外的命令，如：
+set -e
+echo "Starting PostgreSQL..."
+service postgresql start
+echo "Starting ODOO..."
+service odoo-server start
+#Extra line added in the script to run all command line arguments
+exec "$@";
+
+并在运行码头图像时提供一些[COMMAND]，如：
+#To open container with a shell prompt
+docker run -it webkul/odoo:v10 /bin/bash
+ 
+or
+ 
+#To start a container in detached mode
+docker run -dit webkul/odoo:v10 /bin/bash
+那就是！我希望将来会帮助某人。和我最有可能意味着我的人！
+#----------------------------------------
