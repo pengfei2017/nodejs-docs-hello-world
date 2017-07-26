@@ -308,6 +308,7 @@ docker stack services agent-web
 
 #查看发布后的agent-web应用的每个服务是否有错误
 docker stack ps agent-web
+docker stack services agent-web
 
 #修改ubuntu主机名
 sudo vim /etc/hostname
