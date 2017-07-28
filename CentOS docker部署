@@ -483,3 +483,8 @@ git rev-parse --abbrev-ref HEAD
 # 在当前shell中设置本次构建的镜像标签 形如构建编号-分支名-标签名
 export TAG=$BUILD_NUMBER-$(git rev-parse --abbrev-ref HEAD)-$(git tag | tail -n1)
 
+# 设置gitlab的webhook事件
+进入地址：http://gitlab.cloudrelation.com/hepengfei/agent-backend/settings/integrations
+在webhook的URL中填写如下地址
+http://hepengfei:6e43d38d26d6aae2daab81693cadb15d@116.62.138.243/job/agent-backend-web/build?token=agent-backend-token
+选择Tag push events事件
