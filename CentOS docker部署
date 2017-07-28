@@ -436,7 +436,7 @@ docker rmi $(docker images | grep "^none" | awk '{print $3}')
 
 # 删除REPOSITORY为<none>或者TAG为<none>的镜像
 if [ docker images | grep "none" | wc -l -ne 0 ]; then
-docker rmi $(docker images | grep "none" | awk '{print $3}')
+docker rmi -f $(docker images | grep "none" | awk '{print $3}')
 fi
 
 # 清理无用的镜像，容器，和volume
