@@ -306,6 +306,8 @@ networks:
 查看发布后的多容器应用已经启动的所有服务以及节点分配
 docker stack services agent-web
 
+# 查看当前集群中共部署了几个stack
+docker stack ls
 #查看发布后的agent-web应用的每个服务是否有错误
 docker stack ps agent-web
 docker stack services agent-web
