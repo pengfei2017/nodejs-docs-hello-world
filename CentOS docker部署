@@ -422,3 +422,8 @@ exec "$@"
 什么是set -e和exec "$@"，为什么要用这两个？
 set -e - 如果任何命令失败，则退出脚本（非零值）
 exec "$@"- 将重定向输入变量，在这里看到更多
+
+# 本机docker images搜索和过滤
+删除没有tag的镜像
+docker rmi $(docker images -f "dangling=true" -q)
+参考文档：https://github.com/moby/moby/blob/10c0af083544460a2ddc2218f37dc24a077f7d90/docs/reference/commandline/images.md#filtering
