@@ -461,3 +461,6 @@ services:
     
 # 获取当前分支上以beta结尾的最新的标签
 git tag -l *beta | tail -n1
+
+# 获取当前git分支的名字
+git rev-parse --abbrev-ref HEAD
