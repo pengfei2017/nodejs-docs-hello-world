@@ -457,3 +457,7 @@ version: '3'
 services:
   web:
     image: 'webapp:v2.0'
+    
+    
+# 获取当前分支上以beta结尾的最新的标签
+git tag -l *beta | tail -n1
