@@ -467,5 +467,5 @@ git tag -l *beta | tail -n1
 # 获取当前git分支的名字
 git rev-parse --abbrev-ref HEAD
 
-# 在当前shell中设置本次构建的镜像标签 如构建编号-分支名-标签名
+# 在当前shell中设置本次构建的镜像标签 形如构建编号-分支名-标签名
 export TAG=$BUILD_NUMBER-$(git rev-parse --abbrev-ref HEAD)-$(git tag | tail -n1)
