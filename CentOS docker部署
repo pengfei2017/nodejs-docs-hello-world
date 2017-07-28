@@ -431,6 +431,13 @@ docker rmi $(docker images --filter=reference='busy*:*libc')
 删除当前shell终端中输出行中包含<none>的所有的镜像
 docker rmi $(docker images | grep "<none>")
 # 清理无用的镜像，容器，和volume
+
+# Remove contianers which have 'none' as repository name: 
+docker rmi $(docker images | grep "^none" | awk '{print $3}')
+
+# Remove contianers which have 'none' tag or repository name: 
+docker rmi $(docker images | grep "none" | awk '{print $3}')
+
 docker system prune
 参考文档：https://github.com/moby/moby/blob/10c0af083544460a2ddc2218f37dc24a077f7d90/docs/reference/commandline/images.md#filtering
 
