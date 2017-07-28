@@ -429,3 +429,31 @@ docker rmi $(docker images -f "dangling=true" -q)
 删除REPOSITORY中以busy字符开头并且TAG以libc字符结尾的镜像
 docker rmi $(docker images --filter=reference='busy*:*libc')
 参考文档：https://github.com/moby/moby/blob/10c0af083544460a2ddc2218f37dc24a077f7d90/docs/reference/commandline/images.md#filtering
+
+# ---------------
+“.env”文件
+您可以在撰写文件中引用的任何环境变量设置的默认值，或用于配置撰写，在环境文件名为.env：
+
+$ cat .env
+TAG=v1.5
+
+$ cat docker-compose.yml
+version: '3'
+services:
+  web:
+    image: "webapp:${TAG}"
+运行时docker-compose up，web上面定义的服务使用图像webapp:v1.5。您可以使用config命令验证这一点，该命令会将解析的应用程序配置文件打印到终端中：
+
+$ docker-compose config
+version: '3'
+services:
+  web:
+    image: 'webapp:v1.5'
+shell中的值优先于.env文件中指定的值。如果你TAG在你的shell中设置了一个不同的值，那么替换image代替：
+
+$ export TAG=v2.0
+$ docker-compose config
+version: '3'
+services:
+  web:
+    image: 'webapp:v2.0'
