@@ -493,3 +493,10 @@ http://hepengfei:6e43d38d26d6aae2daab81693cadb15d@116.62.138.243/job/agent-backe
 The JAVA_HOME environment variable is not defined correctly
 This environment variable is needed to run this program
 NB: JAVA_HOME should point to a JDK not a JRE
+解决办法是使用该镜像作为基础镜像写一个Dockerfile,如下
+#----------------------------------------
+FROM reg.chuangjiangx.com/maven:latest
+ENV JAVA_HOME /usr/lib/jvm/jdk1.8.0_144
+#----------------------------------------
+利用该Dockerfile文件重新构建一个镜像
+
