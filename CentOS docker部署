@@ -499,4 +499,17 @@ FROM reg.chuangjiangx.com/maven:latest
 ENV JAVA_HOME /usr/lib/jvm/jdk1.8.0_144
 #----------------------------------------
 利用该Dockerfile文件重新构建一个镜像
+原因分析：虽然在安装java时，配置了vim ~/.bashrc文件，添加了
+export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_60  ## ???????????????jdk ??
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+并且执行了source ~/.bashrc使新环境配置在当前shell中起作用
+但是不离开当前shell就可以没事，一直知道JAVA_HOME environment variable，
+一旦镜像构建完成，使用java镜像作为基础镜像构建新镜像时，用到java时就会报The JAVA_HOME environment variable is not defined correctly的错误
+而以docker run -it <java镜像> bash 方式进入容器内部运行基础镜像时，在容器内部运行java，就不报JAVA_HOME的错误，
+这说明，其实docker run -it <java镜像> bash 方式就好比对一台电脑进行开机，开机后会自动调用source ~/.bashrc，在打开的shell中就有JAVA_HOME
+而把<java镜像>作为基础镜像构建新镜像的使用场景并没有以打开一个shell的方式运行，所有Docker的做法就是用
+ENV JAVA_HOME /usr/lib/jvm/jdk1.8.0_144，来设置此使用场景的JAVA_HOME
+所以保险的做法是，构建基础镜像时，若需要配置环境变量，除了设置~/.bashrc文件，也要弄一次ENV设置，来满足多种使用场景
 
