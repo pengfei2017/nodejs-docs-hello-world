@@ -523,3 +523,6 @@ du -sh *
 umount path
 以上命令更多参数可查看man或info。相比起man，info功能更强大，并且更适合盲人使用。info的用法和man一样，info后面跟命令名称。进入info界面后，会有一个光标，可以通过键盘方向键移动来读取内容，按ESC+右方向键可以跳到下一个英文单词，按ESC+左方向键可以跳到上一个英文单词。按q退出，按h进入帮助页面，查看更多快捷键。info不是一页纸，而像一本书，里面的内容有链接，可以随时跳到相关的内容页去。
 
+
+# 构建镜像报grpc: the connection is unavailable的错误
+解决方法：运行systemctl restart docker，重启一下docker就好
