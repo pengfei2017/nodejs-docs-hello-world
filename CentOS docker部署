@@ -526,3 +526,5 @@ umount path
 
 # 构建镜像报grpc: the connection is unavailable的错误
 解决方法：运行systemctl restart docker，重启一下docker就好
+
+# 部署nodejs项目，带redis和mongoDB的，参考地址：http://blog.shiqichan.com/Dockerizing-a-Node-js-Web-Application/
