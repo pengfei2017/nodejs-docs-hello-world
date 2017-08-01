@@ -549,3 +549,5 @@ invalid reference format
 这是因为找不到镜像
 别忘了export TAG=27-HEAD-0.0.2就好了
 
+https://www.katacoda.com/courses/traefik/deploy-load-balancer
+
