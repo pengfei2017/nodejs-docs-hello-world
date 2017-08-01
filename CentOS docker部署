@@ -538,3 +538,8 @@ deploy:
     placement:
         constraints:
 	    - node.labels.<key> == <value>
+
+# sticky session 这个主要是服务器集群的时候用到的，所谓粘性session是指当用户发出第一个request后，负载均衡器动态的把该用户分配到某个节点，并记录该节点的路由，以后
+该用户的所有request都绑定到这个路由，用户只会与该server发生交互，这种策略被称为粘性session(session sticky)
+docker集群粘性会话参考链接：https://www.n0r1sk.com/index.php/2017/05/14/traefik-ingress-controller-for-docker-swarm-overlay-network-routing-mesh/
+	
