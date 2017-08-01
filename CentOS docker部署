@@ -531,7 +531,8 @@ umount path
 
 # 部署约束：参考链接https://docs.docker.com/datacenter/ucp/2.1/guides/admin/configure/add-labels-to-cluster-nodes/#apply-labels-to-a-node
 将标签添加到集群中的某一台节点
-docker node update --label-add <key>=<value> <node-id>
+docker node update --label-add <key>=<value> <node-id>  
+比如：docker node update --label-add server-type=client-api-server 7a5vthhqykfscqbyecj6zdzkb
 向docker-stack.yml文件添加部署约束
 deploy:
     placement:
