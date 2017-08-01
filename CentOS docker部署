@@ -535,6 +535,5 @@ docker node update --label-add <key>=<value> <node-id>
 向docker-stack.yml文件添加部署约束
 deploy:
     placement:
-        constraints: 
-	    #- [node.role == manager]
+        constraints:
 	    - node.labels.<key> == <value>
