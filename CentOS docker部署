@@ -543,3 +543,9 @@ deploy:
 该用户的所有request都绑定到这个路由，用户只会与该server发生交互，这种策略被称为粘性session(session sticky)
 docker集群粘性会话参考链接：https://www.n0r1sk.com/index.php/2017/05/14/traefik-ingress-controller-for-docker-swarm-overlay-network-routing-mesh/
 docker集群粘性会话参考另一链接：http://littlebigextra.com/how-to-maintain-session-persistence-sticky-session-in-docker-swarm-with-multiple-containers/
+
+# 在manager主机上执行docker stack deploy --compose-file ./merchant-backend-web/dockerfiles/docker-stack.yml merchant-backend-web-server --with-registry-auth报错
+invalid reference format
+这是因为找不到镜像
+别忘了export TAG=27-HEAD-0.0.2就好了
+
