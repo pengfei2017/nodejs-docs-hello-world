@@ -426,7 +426,7 @@ exec "$@"- 将重定向输入变量，在这里看到更多
 # 本机docker images搜索和过滤
 删除REPOSITORY为<none>并且TAG为<none>的镜像
 if [ $(docker images -f "dangling=true" | wc -l) -ne 0 ]; then
-docker rmi $(docker images -f "dangling=true" -q)
+docker rmi -f $(docker images -f "dangling=true" -q)
 fi
 删除REPOSITORY中以busy字符开头并且TAG以libc字符结尾的镜像
 docker rmi $(docker images --filter=reference='busy*:*libc')
