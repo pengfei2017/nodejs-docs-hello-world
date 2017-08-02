@@ -139,6 +139,9 @@ apt-get install vim
 cd /usr/share/maven/conf/
 vim settings.xml
 添加下面两段代码
+搜索打开和配置本地镜像库，然后启动镜像时挂载到本机目录，就可以加快编译速度
+<localRepository>${user.home}/.m2/repository</localRepository>
+打开远程镜像库
 <mirror>
 		<id>nexus-osc</id>
 		<mirrorOf>central</mirrorOf>
@@ -148,10 +151,10 @@ vim settings.xml
     
     和
 <profile>
-        <id>jdk-1.4</id>
+        <id>jdk-1.8</id>
 
         <activation>
-            <jdk>1.4</jdk>
+            <jdk>1.8</jdk>
         </activation>
       	<repositories>
 			<repository>
