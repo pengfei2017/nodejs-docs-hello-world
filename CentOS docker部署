@@ -614,3 +614,62 @@ services:
 networks:
   net:
 #---------------------------------------------------------
+version: '3.1'
+
+services:
+
+    merchant-backend-web-server:
+        image: reg.chuangjiangx.com/merchant-backend-web-runjava:${TAG}
+        # mount point for application
+        volumes:
+            - Logs:/var/logs
+        networks:
+            - merchant-backend-web-net
+        deploy:
+            replicas: 2
+            mode: replicated
+            placement:
+                constraints: [node.role == worker]
+            update_config:
+                delay: 2s
+            restart_policy:
+                condition: any
+            labels: ###一定要注意这里，是deploy的label,而不是容器的label，注意缩进
+                - "traefik.docker.network=merchant-backend-web-server_merchant-backend-web-net"
+                - "traefik.port=9090"
+                - "traefik.frontend.rule=PathPrefix:/;"
+                - "traefik.backend.loadbalancer.sticky=true"
+
+    loadbalancer:
+        image: reg.chuangjiangx.com/traefik
+        command: --docker \
+          --docker.swarmmode \
+          --docker.watch \
+          --web \
+          --loglevel=DEBUG
+        ports:
+          - 80:80
+          - 25581:8080
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+          - /dev/null:/traefik.toml
+        deploy:
+          restart_policy:
+            condition: any
+          mode: replicated
+          replicas: 1
+          update_config:
+            delay: 2s
+          placement:
+             constraints: [node.role == manager]
+        networks:
+          - merchant-backend-web-net
+
+volumes:
+    Logs:
+
+networks:
+    merchant-backend-web-net:
+        driver: overlay
+
+#---------------------------------------------------------
