@@ -139,7 +139,7 @@ apt-get install vim
 cd /usr/share/maven/conf/
 vim settings.xml
 添加下面两段代码
-搜索打开和配置本地镜像库，然后启动容器时挂载到本机目录 -v /.m2/repository:/root/.m2/repository，就可以加快编译速度
+搜索打开和配置本地镜像库，然后启动容器时挂载到本机目录 -v /.m2/repository:/root/.m2/repository，也可以在Dockerfile中用VOLUME /root/.m2/repository挂载到本机目录，就可以加快编译速度
 <localRepository>${user.home}/.m2/repository</localRepository>
 打开远程镜像库
 <mirror>
