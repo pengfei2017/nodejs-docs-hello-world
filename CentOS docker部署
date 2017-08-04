@@ -584,7 +584,7 @@ services:
       labels: ###一定要注意这里，是deploy的label,而不是容器的label，注意缩进
         - "traefik.docker.network=my_net"
         - "traefik.port=80"
-        - "traefik.frontend.rule=PathPrefix:/;"
+        - "traefik.frontend.rule=PathPrefixStrip:/;"
         - "traefik.backend.loadbalancer.sticky=true"
 
   loadbalancer:
@@ -637,7 +637,7 @@ services:
             labels: ###一定要注意这里，是deploy的label,而不是容器的label，注意缩进
                 - "traefik.docker.network=merchant-backend-web-server_merchant-backend-web-net"
                 - "traefik.port=9090"
-                - "traefik.frontend.rule=PathPrefix:/;"
+                - "traefik.frontend.rule=PathPrefixStrip:/;"
                 - "traefik.backend.loadbalancer.sticky=true"
 
     loadbalancer:
